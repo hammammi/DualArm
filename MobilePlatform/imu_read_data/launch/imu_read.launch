@@ -1,0 +1,5 @@
+<launch>
+  <node pkg="imu_read_data"
+        type="imu_read"
+        name="imu_read"/>
+</launch>
