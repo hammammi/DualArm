@@ -1,0 +1,2394 @@
+<?xml version="1.0"?>
+
+<robot name="mobile_robot" xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:include filename="$(find mobile_description)/urdf/common_properties.urdf.xacro"/>
+
+  <xacro:property name="cameraSize" value="0.05"/>
+  <xacro:property name="cameraMass" value="0.1"/>
+
+  <xacro:include filename="$(find mobile_description)/urdf/mobile_gazebo.urdf.xacro"/>
+
+<link name="base_footprint"/>
+
+    <joint name="base_joint" type="fixed">
+      <origin xyz="0 0 0.5" rpy="0 0 0" />
+      <parent link="base_footprint"/>
+      <child link="mecanum_platform" />
+    </joint>
+
+
+  <link name="mecanum_platform">        
+        <collision name="mecanum_platform_collision">
+        <origin 
+          xyz="0 0 0"
+          rpy="0 0 0"
+         /> 
+        <geometry>
+            <box size="0.471 0.620 0.15" />
+        </geometry>
+        </collision>
+        <visual name="mecanum_platform_visual">
+            <geometry>
+              <box size="0.471 0.620 0.15" />
+            </geometry>
+        </visual>
+        <inertial>
+          <origin 
+            xyz="0 0 0.07"
+            rpy="0 3.14159 0"
+          />
+        <mass value="1"/>
+        <inertia
+          ixx="1.0" ixy="0.0" ixz="0.0"
+          iyy="1.0" iyz="0.0"
+          izz="1.0"/>
+        </inertial>
+  </link>
+  
+
+  <link name="fl_base_link">
+    <inertial>
+      <origin
+        xyz="0 -0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.0498803432698733" />
+      <inertia
+        ixx="3.19758446844846E-05"
+        ixy="5.3661757146402E-20"
+        ixz="-8.17876923870322E-21"
+        iyy="8.78605196885533E-05"
+        iyz="-1.67967569834832E-17"
+        izz="8.84011092506718E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/fl_wheel/fl_base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/fl_wheel/fl_base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+
+  <link name="fl_wheel_link">
+    <inertial>
+      <origin
+        xyz="-0.0648854825681996 -6.73137592888118E-08 -8.7947375295187E-06"
+        rpy="0 0 0" />
+      <mass
+        value="0.395729045975823" />
+      <inertia
+        ixx="0.000529609126886196"
+        ixy="-8.65175928348985E-10"
+        ixz="-1.79623747435357E-07"
+        iyy="0.000647504571410769"
+        iyz="4.76578241891454E-10"
+        izz="0.000650696147203234" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/fl_wheel/fl_wheel_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/fl_wheel/fl_wheel_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+
+    <joint name="mecanum_platform_fl_joint" type="fixed">
+        <origin
+            xyz="-0.2355 0.281 -0.05"
+            rpy="0 0 0"
+            ></origin>
+        <parent
+            link="mecanum_platform"
+            ></parent>
+        <child
+            link="fl_base_link"
+            ></child>
+        <axis
+            xyz="0 1 0"
+            ></axis>
+        <dynamics friction="0.2"/>
+       </joint>
+
+
+  <joint name="fl_wheel_joint" type="continuous">
+    <origin
+      xyz="-0.0245 0 0"
+      rpy="0 -1.5469E-18 0" />
+    <parent
+      link="fl_base_link" />
+    <child
+      link="fl_wheel_link" />
+    <axis
+      xyz="1 0 0" />
+  <dynamics friction="0.2"/>    </joint>
+  
+
+  <link name="fl_roller1_link">
+    <inertial>
+      <origin
+        xyz="-0.045288539617926 -5.55111512312578E-17 5.63320153179614E-06"
+        rpy="0 0 0" />
+      <mass
+        value="0.0473311807747447" />
+      <inertia
+        ixx="5.95666675676984E-06"
+        ixy="-8.21621958836671E-20"
+        ixz="-9.21148330139052E-20"
+        iyy="2.07114777235972E-05"
+        iyz="1.13665398627389E-11"
+        izz="2.07113626272734E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/fl_wheel/fl_roller1_link.STL" />
+      </geometry>
+      <material name="">
+        <color
+          rgba="0.294117647058824 0.294117647058824 0.294117647058824 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/fl_wheel/fl_roller1_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="fl_roller1_joint"
+    type="continuous">
+    <origin
+      xyz="-0.03054083371 0.0676793081136776 -0.00217599972517744"
+      rpy="-0.684719202981659 -0.659058035832177 0.463647608991863" />
+    <parent
+      link="fl_wheel_link" />
+    <child
+      link="fl_roller1_link" />
+    <axis
+      xyz="1 0 0" />
+  <dynamics friction="0.2"/>    </joint>
+  
+
+  <link name="fl_roller2_link">
+    <inertial>
+      <origin
+        xyz="-0.0452885396172427 -4.76477507727058E-08 6.04707391105297E-08"
+        rpy="0 0 0" />
+      <mass
+        value="0.0473297312655759" />
+      <inertia
+        ixx="5.95624264411409E-06"
+        ixy="9.45697994803271E-10"
+        ixz="7.45162685543128E-10"
+        iyy="2.07100204128152E-05"
+        iyz="4.21537036199346E-10"
+        izz="2.07098175834426E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/fl_wheel/fl_roller2_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.294117647058824 0.294117647058824 0.294117647058824 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/fl_wheel/fl_roller2_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+
+  <joint name="fl_roller2_joint" type="continuous">
+    <origin
+      xyz="-0.0305448169859234 0.0463216811002082 -0.0493941309271215"
+      rpy="-1.38354722723357 -0.184050041377727 0.768067518589805" />
+    <parent
+      link="fl_wheel_link" />
+    <child
+      link="fl_roller2_link" />
+    <axis
+      xyz="1 0 0" />
+  <dynamics friction="0.2"/>    </joint>
+
+
+  <link name="fl_roller3_link">
+    <inertial>
+      <origin
+        xyz="-0.0452880974652319 -6.17291455728974E-08 -4.10127349553813E-07"
+        rpy="0 0 0" />
+      <mass
+        value="0.0473304560201598" />
+      <inertia
+        ixx="5.95648649994101E-06"
+        ixy="-8.99886847015237E-11"
+        ixz="-5.97883229017051E-10"
+        iyy="2.07104581690493E-05"
+        iyz="6.2422871466102E-11"
+        izz="2.07109127855071E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/fl_wheel/fl_roller3_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.294117647058824 0.294117647058824 0.294117647058824 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/fl_wheel/fl_roller3_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+
+  <joint name="fl_roller3_joint" type="continuous">
+    <origin
+      xyz="-0.0305448169850032 -0.00217255010799444 -0.0676812997505826"
+      rpy="-1.95839301343363 0.361367123898259 0.713724378948452" />
+    <parent
+      link="fl_wheel_link" />
+    <child
+      link="fl_roller3_link" />
+    <axis
+      xyz="-1 0 0" />
+  <dynamics friction="0.2"/>    </joint>
+
+
+  <link name="fl_roller4_link">
+    <inertial>
+      <origin
+        xyz="-0.045288539617242 4.44089209850063E-16 5.63320271565471E-06"
+        rpy="0 0 0" />
+      <mass
+        value="0.0473282817564067" />
+      <inertia
+        ixx="5.9558185319925E-06"
+        ixy="7.89858223314635E-20"
+        ixz="-1.85910497032518E-19"
+        iyy="2.07077107164681E-05"
+        iyz="3.91952297092206E-10"
+        izz="2.07091249257065E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/fl_wheel/fl_roller4_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.294117647058824 0.294117647058824 0.294117647058824 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/fl_wheel/fl_roller4_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+
+  <joint name="fl_roller4_joint"
+    type="continuous">
+    <origin
+      xyz="-0.0305408337102317 -0.0493951618748922 -0.0463178335507474"
+      rpy="-2.77937450834843 0.751879414303912 0.253261563476717" />
+    <parent
+      link="fl_wheel_link" />
+    <child
+      link="fl_roller4_link" />
+    <axis
+      xyz="-1 0 0" />
+  <dynamics friction="0.2"/>    </joint>
+
+
+  <link name="fl_roller5_link">
+    <inertial>
+      <origin
+        xyz="-0.0452885396179259 1.11022302462516E-16 1.11022302462516E-16"
+        rpy="0 0 0" />
+      <mass
+        value="0.0473311807747449" />
+      <inertia
+        ixx="5.95666675678235E-06"
+        ixy="9.03148880009898E-20"
+        ixz="9.75676076118547E-20"
+        iyy="2.07114777236037E-05"
+        iyz="1.13665398394455E-11"
+        izz="2.071136262728E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/fl_wheel/fl_roller5_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.294117647058824 0.294117647058824 0.294117647058824 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/fl_wheel/fl_roller5_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+
+  <joint name="fl_roller5_joint" type="continuous">
+    <origin
+      xyz="-0.0305448169850034 -0.0676812997507424 0.00217255010859067"
+      rpy="2.45687345060814 0.659058035832183 -0.463647608991871" />
+    <parent
+      link="fl_wheel_link" />
+    <child
+      link="fl_roller5_link" />
+    <axis
+      xyz="1 0 0" />
+  <dynamics friction="0.2"/>    </joint>
+
+
+  <link name="fl_roller6_link">
+    <inertial>
+      <origin
+        xyz="-0.0446363194156568 2.4980018054066E-16 -0.00765838166294436"
+        rpy="0 0 0" />
+      <mass
+        value="0.0473282817564067" />
+      <inertia
+        ixx="6.37769183193194E-06"
+        ixy="-1.00606151635371E-10"
+        ixz="-2.45885778444058E-06"
+        iyy="2.07078704039077E-05"
+        iyz="5.86375623318695E-10"
+        izz="2.02870919383533E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/fl_wheel/fl_roller6_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.294117647058824 0.294117647058824 0.294117647058824 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/fl_wheel/fl_roller6_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="fl_roller6_joint" type="continuous">
+    <origin
+      xyz="-0.0305448169850555 -0.046321681098933 0.0493941309281022"
+      rpy="1.78618227411955 0.14999101197276 -0.599233881239109" />
+    <parent
+      link="fl_wheel_link" />
+    <child
+      link="fl_roller6_link" />
+    <axis
+      xyz="0.985598559652744 0 0.169101978730104" />
+  <dynamics friction="0.2"/>    </joint>
+
+  <link name="fl_roller7_link">
+    <inertial>
+      <origin
+        xyz="-0.0452885396179256 2.77555756156289E-17 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.0473282817564066" />
+      <inertia
+        ixx="5.95581853199338E-06"
+        ixy="-1.56383457886825E-19"
+        ixz="6.18334051495639E-20"
+        iyy="2.07078993942717E-05"
+        iyz="-6.20368585332615E-10"
+        izz="2.07089362479046E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/fl_wheel/fl_roller7_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.294117647058824 0.294117647058824 0.294117647058824 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/fl_wheel/fl_roller7_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+
+  <joint name="fl_roller7_joint" type="continuous">
+    <origin
+      xyz="-0.0305448169850031 0.00217255010843093 0.0676812997513387"
+      rpy="1.18319964015616 -0.361367123898259 -0.713724378948451" />
+    <parent
+      link="fl_wheel_link" />
+    <child
+      link="fl_roller7_link" />
+    <axis
+      xyz="1 0 0" />
+  <dynamics friction="0.2"/>    </joint>
+  <link name="fl_roller8_link">
+    <inertial>
+      <origin
+        xyz="-0.045288539617243 1.66533453693773E-16 2.09526840322383E-13"
+        rpy="0 0 0" />
+      <mass
+        value="0.0473311807747445" />
+      <inertia
+        ixx="5.95666675676974E-06"
+        ixy="-7.26330752270563E-20"
+        ixz="-5.94511249854112E-20"
+        iyy="2.07114545496776E-05"
+        iyz="-4.75331528258681E-11"
+        izz="2.07113858011925E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/fl_wheel/fl_roller8_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.294117647058824 0.294117647058824 0.294117647058824 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/fl_wheel/fl_roller8_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+
+  <joint name="fl_roller8_joint" type="continuous">
+    <origin
+      xyz="-0.0305448169859232 0.0493941309277178 0.0463216811003681"
+      rpy="0.36221814524137 -0.751879414303914 -0.253261563476718" />
+    <parent
+      link="fl_wheel_link" />
+    <child
+      link="fl_roller8_link" />
+    <axis
+      xyz="1 0 0" />
+  <dynamics friction="0.2"/>    </joint>
+
+
+
+
+
+
+
+
+
+  <link name="br_base_link">
+    <inertial>
+      <origin
+        xyz="0 -0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.0498803432698733" />
+      <inertia
+        ixx="3.19758446844846E-05"
+        ixy="5.3661757146402E-20"
+        ixz="-8.17876923870322E-21"
+        iyy="8.78605196885533E-05"
+        iyz="-1.67967569834832E-17"
+        izz="8.84011092506718E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/br_wheel/br_base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/br_wheel/br_base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+
+  <link name="br_wheel_link">
+    <inertial>
+      <origin
+        xyz="-0.0648854825681996 -6.73137592888118E-08 -8.7947375295187E-06"
+        rpy="0 0 0" />
+      <mass
+        value="0.395729045975823" />
+      <inertia
+        ixx="0.000529609126886196"
+        ixy="-8.65175928348985E-10"
+        ixz="-1.79623747435357E-07"
+        iyy="0.000647504571410769"
+        iyz="4.76578241891454E-10"
+        izz="0.000650696147203234" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/br_wheel/br_wheel_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/br_wheel/br_wheel_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+
+    <joint name="mecanum_platform_br_joint" type="fixed">
+        <origin
+            xyz="0.2355 -0.281 -0.05"
+            rpy="0 0 3.141592"
+            ></origin>
+        <parent
+            link="mecanum_platform"
+            ></parent>
+        <child
+            link="br_base_link"
+            ></child>
+        <axis
+            xyz="0 1 0"
+            ></axis>
+    <dynamics friction="0.2"/>    </joint>
+
+
+  <joint name="br_wheel_joint" type="continuous">
+    <origin
+      xyz="-0.0245 0 0"
+      rpy="0 -1.5469E-18 0" />
+    <parent
+      link="br_base_link" />
+    <child
+      link="br_wheel_link" />
+    <axis
+      xyz="1 0 0" />
+  <dynamics friction="0.2"/>    </joint>
+  
+
+  <link name="br_roller1_link">
+    <inertial>
+      <origin
+        xyz="-0.045288539617926 -5.55111512312578E-17 5.63320153179614E-06"
+        rpy="0 0 0" />
+      <mass
+        value="0.0473311807747447" />
+      <inertia
+        ixx="5.95666675676984E-06"
+        ixy="-8.21621958836671E-20"
+        ixz="-9.21148330139052E-20"
+        iyy="2.07114777235972E-05"
+        iyz="1.13665398627389E-11"
+        izz="2.07113626272734E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/br_wheel/br_roller1_link.STL" />
+      </geometry>
+      <material name="">
+        <color
+          rgba="0.294117647058824 0.294117647058824 0.294117647058824 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/br_wheel/br_roller1_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="br_roller1_joint"
+    type="continuous">
+    <origin
+      xyz="-0.03054083371 0.0676793081136776 -0.00217599972517744"
+      rpy="-0.684719202981659 -0.659058035832177 0.463647608991863" />
+    <parent
+      link="br_wheel_link" />
+    <child
+      link="br_roller1_link" />
+    <axis
+      xyz="1 0 0" />
+  <dynamics friction="0.2"/>    </joint>
+  
+
+  <link name="br_roller2_link">
+    <inertial>
+      <origin
+        xyz="-0.0452885396172427 -4.76477507727058E-08 6.04707391105297E-08"
+        rpy="0 0 0" />
+      <mass
+        value="0.0473297312655759" />
+      <inertia
+        ixx="5.95624264411409E-06"
+        ixy="9.45697994803271E-10"
+        ixz="7.45162685543128E-10"
+        iyy="2.07100204128152E-05"
+        iyz="4.21537036199346E-10"
+        izz="2.07098175834426E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/br_wheel/br_roller2_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.294117647058824 0.294117647058824 0.294117647058824 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/br_wheel/br_roller2_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+
+  <joint name="br_roller2_joint" type="continuous">
+    <origin
+      xyz="-0.0305448169859234 0.0463216811002082 -0.0493941309271215"
+      rpy="-1.38354722723357 -0.184050041377727 0.768067518589805" />
+    <parent
+      link="br_wheel_link" />
+    <child
+      link="br_roller2_link" />
+    <axis
+      xyz="1 0 0" />
+  <dynamics friction="0.2"/>    </joint>
+
+
+  <link name="br_roller3_link">
+    <inertial>
+      <origin
+        xyz="-0.0452880974652319 -6.17291455728974E-08 -4.10127349553813E-07"
+        rpy="0 0 0" />
+      <mass
+        value="0.0473304560201598" />
+      <inertia
+        ixx="5.95648649994101E-06"
+        ixy="-8.99886847015237E-11"
+        ixz="-5.97883229017051E-10"
+        iyy="2.07104581690493E-05"
+        iyz="6.2422871466102E-11"
+        izz="2.07109127855071E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/br_wheel/br_roller3_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.294117647058824 0.294117647058824 0.294117647058824 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/br_wheel/br_roller3_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+
+  <joint name="br_roller3_joint" type="continuous">
+    <origin
+      xyz="-0.0305448169850032 -0.00217255010799444 -0.0676812997505826"
+      rpy="-1.95839301343363 0.361367123898259 0.713724378948452" />
+    <parent
+      link="br_wheel_link" />
+    <child
+      link="br_roller3_link" />
+    <axis
+      xyz="-1 0 0" />
+  <dynamics friction="0.2"/>    </joint>
+
+
+  <link name="br_roller4_link">
+    <inertial>
+      <origin
+        xyz="-0.045288539617242 4.44089209850063E-16 5.63320271565471E-06"
+        rpy="0 0 0" />
+      <mass
+        value="0.0473282817564067" />
+      <inertia
+        ixx="5.9558185319925E-06"
+        ixy="7.89858223314635E-20"
+        ixz="-1.85910497032518E-19"
+        iyy="2.07077107164681E-05"
+        iyz="3.91952297092206E-10"
+        izz="2.07091249257065E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/br_wheel/br_roller4_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.294117647058824 0.294117647058824 0.294117647058824 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/br_wheel/br_roller4_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+
+  <joint name="br_roller4_joint"
+    type="continuous">
+    <origin
+      xyz="-0.0305408337102317 -0.0493951618748922 -0.0463178335507474"
+      rpy="-2.77937450834843 0.751879414303912 0.253261563476717" />
+    <parent
+      link="br_wheel_link" />
+    <child
+      link="br_roller4_link" />
+    <axis
+      xyz="-1 0 0" />
+  <dynamics friction="0.2"/>    </joint>
+
+
+  <link name="br_roller5_link">
+    <inertial>
+      <origin
+        xyz="-0.0452885396179259 1.11022302462516E-16 1.11022302462516E-16"
+        rpy="0 0 0" />
+      <mass
+        value="0.0473311807747449" />
+      <inertia
+        ixx="5.95666675678235E-06"
+        ixy="9.03148880009898E-20"
+        ixz="9.75676076118547E-20"
+        iyy="2.07114777236037E-05"
+        iyz="1.13665398394455E-11"
+        izz="2.071136262728E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/br_wheel/br_roller5_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.294117647058824 0.294117647058824 0.294117647058824 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/br_wheel/br_roller5_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+
+  <joint name="br_roller5_joint" type="continuous">
+    <origin
+      xyz="-0.0305448169850034 -0.0676812997507424 0.00217255010859067"
+      rpy="2.45687345060814 0.659058035832183 -0.463647608991871" />
+    <parent
+      link="br_wheel_link" />
+    <child
+      link="br_roller5_link" />
+    <axis
+      xyz="1 0 0" />
+  <dynamics friction="0.2"/>    </joint>
+
+
+  <link name="br_roller6_link">
+    <inertial>
+      <origin
+        xyz="-0.0446363194156568 2.4980018054066E-16 -0.00765838166294436"
+        rpy="0 0 0" />
+      <mass
+        value="0.0473282817564067" />
+      <inertia
+        ixx="6.37769183193194E-06"
+        ixy="-1.00606151635371E-10"
+        ixz="-2.45885778444058E-06"
+        iyy="2.07078704039077E-05"
+        iyz="5.86375623318695E-10"
+        izz="2.02870919383533E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/br_wheel/br_roller6_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.294117647058824 0.294117647058824 0.294117647058824 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/br_wheel/br_roller6_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="br_roller6_joint" type="continuous">
+    <origin
+      xyz="-0.0305448169850555 -0.046321681098933 0.0493941309281022"
+      rpy="1.78618227411955 0.14999101197276 -0.599233881239109" />
+    <parent
+      link="br_wheel_link" />
+    <child
+      link="br_roller6_link" />
+    <axis
+      xyz="0.985598559652744 0 0.169101978730104" />
+  <dynamics friction="0.2"/>    </joint>
+
+  <link name="br_roller7_link">
+    <inertial>
+      <origin
+        xyz="-0.0452885396179256 2.77555756156289E-17 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.0473282817564066" />
+      <inertia
+        ixx="5.95581853199338E-06"
+        ixy="-1.56383457886825E-19"
+        ixz="6.18334051495639E-20"
+        iyy="2.07078993942717E-05"
+        iyz="-6.20368585332615E-10"
+        izz="2.07089362479046E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/br_wheel/br_roller7_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.294117647058824 0.294117647058824 0.294117647058824 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/br_wheel/br_roller7_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+
+  <joint name="br_roller7_joint" type="continuous">
+    <origin
+      xyz="-0.0305448169850031 0.00217255010843093 0.0676812997513387"
+      rpy="1.18319964015616 -0.361367123898259 -0.713724378948451" />
+    <parent
+      link="br_wheel_link" />
+    <child
+      link="br_roller7_link" />
+    <axis
+      xyz="1 0 0" />
+  <dynamics friction="0.2"/>    </joint>
+  <link name="br_roller8_link">
+    <inertial>
+      <origin
+        xyz="-0.045288539617243 1.66533453693773E-16 2.09526840322383E-13"
+        rpy="0 0 0" />
+      <mass
+        value="0.0473311807747445" />
+      <inertia
+        ixx="5.95666675676974E-06"
+        ixy="-7.26330752270563E-20"
+        ixz="-5.94511249854112E-20"
+        iyy="2.07114545496776E-05"
+        iyz="-4.75331528258681E-11"
+        izz="2.07113858011925E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/br_wheel/br_roller8_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.294117647058824 0.294117647058824 0.294117647058824 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/br_wheel/br_roller8_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="br_roller8_joint" type="continuous">
+    <origin
+      xyz="-0.0305448169859232 0.0493941309277178 0.0463216811003681"
+      rpy="0.36221814524137 -0.751879414303914 -0.253261563476718" />
+    <parent
+      link="br_wheel_link" />
+    <child
+      link="br_roller8_link" />
+    <axis
+      xyz="1 0 0" />
+  <dynamics friction="0.2"/>    </joint>
+
+
+
+
+
+
+<link
+    name="fr_base_link">
+    <inertial>
+      <origin
+        xyz="-0.0345136836910226 -8.67361737988404E-18 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.0498803432698733" />
+      <inertia
+        ixx="3.19758446844847E-05"
+        ixy="1.25885362986825E-20"
+        ixz="-8.44141425998874E-21"
+        iyy="8.8401109250672E-05"
+        iyz="-3.82424206267608E-21"
+        izz="8.78605196885535E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/fr_wheel/fr_base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/fr_wheel/fr_base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="fr_wheel_link">
+    <inertial>
+      <origin
+        xyz="-0.0636340265120955 -1.62520132284304E-05 -1.19245242467536E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.289889297530353" />
+      <inertia
+        ixx="0.000455671291257263"
+        ixy="1.99047152906806E-07"
+        ixz="3.66554346238113E-07"
+        iyy="0.000561800694206904"
+        iyz="-7.21050221552006E-07"
+        izz="0.000563800091619037" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/fr_wheel/fr_wheel_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/fr_wheel/fr_wheel_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="fr_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="-0.0245 0 0"
+      rpy="-5.246E-42 0 -7.0832E-13" />
+    <parent
+      link="fr_base_link" />
+    <child
+      link="fr_wheel_link" />
+    <axis
+      xyz="-1 0 0" />
+  <dynamics friction="0.2"/>    </joint>
+  <link
+    name="fr_roller1_link">
+    <inertial>
+      <origin
+        xyz="-0.0451302732982578 3.64153152077051E-14 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.0589983168358505" />
+      <inertia
+        ixx="7.42498511233542E-06"
+        ixy="1.30796561313861E-17"
+        ixz="9.55129726201624E-20"
+        iyy="2.58167138099161E-05"
+        iyz="1.55872929762113E-11"
+        izz="2.58168566877013E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/fr_wheel/fr_roller1_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.298039215686275 0.298039215686275 0.298039215686275 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/fr_wheel/fr_roller1_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="fr_roller1_joint"
+    type="continuous">
+    <origin
+      xyz="-0.0305408337099969 -0.0319551830112347 -0.0597000000030344"
+      rpy="-3.14159265353736 5.24258969570128E-11 -0.785398163397447" />
+    <parent
+      link="fr_wheel_link" />
+    <child
+      link="fr_roller1_link" />
+    <axis
+      xyz="-1 0 0" />
+  <dynamics friction="0.2"/>    </joint>
+  <link
+    name="fr_roller2_link">
+    <inertial>
+      <origin
+        xyz="-0.0469837387376095 -4.91079079623091E-08 5.9292249277032E-08"
+        rpy="0 0 0" />
+      <mass
+        value="0.0589965100226715" />
+      <inertia
+        ixx="7.42445645589333E-06"
+        ixy="1.15584257499677E-09"
+        ixz="9.57276974215469E-10"
+        iyy="2.5815014710394E-05"
+        iyz="5.30977849742886E-10"
+        izz="2.581481335218E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/fr_wheel/fr_roller2_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.298039215686275 0.298039215686275 0.298039215686275 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/fr_wheel/fr_roller2_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="fr_roller2_joint"
+    type="continuous">
+    <origin
+      xyz="-0.0305408337103717 0.0196185482372059 -0.0648100014401459"
+      rpy="-2.52611294484285 0.52359877562279 -0.61547970860553" />
+    <parent
+      link="fr_wheel_link" />
+    <child
+      link="fr_roller2_link" />
+    <axis
+      xyz="-1 0 0" />
+  <dynamics friction="0.2"/>    </joint>
+  <link
+    name="fr_roller3_link">
+    <inertial>
+      <origin
+        xyz="-0.0471222075665788 -6.24427436424213E-08 4.50321229195083E-08"
+        rpy="0 0 0" />
+      <mass
+        value="0.0589965100226712" />
+      <inertia
+        ixx="7.4244564558808E-06"
+        ixy="8.77856251666826E-10"
+        ixz="1.21725963621641E-09"
+        iyy="2.58147434096345E-05"
+        iyz="5.12798219421238E-10"
+        izz="2.58150846529244E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/fr_wheel/fr_roller3_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.298039215686275 0.298039215686275 0.298039215686275 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/fr_wheel/fr_roller3_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="fr_roller3_joint"
+    type="continuous">
+    <origin
+      xyz="-0.0305408337099969 0.0597000000017051 -0.0319551830112359"
+      rpy="-1.5707963267949 0.785398163397453 7.41406054996327E-11" />
+    <parent
+      link="fr_wheel_link" />
+    <child
+      link="fr_roller3_link" />
+    <axis
+      xyz="1 0 0" />
+  <dynamics friction="0.2"/>    </joint>
+  <link
+    name="fr_roller4_link">
+    <inertial>
+      <origin
+        xyz="-0.0448281383269245 7.33388385576461E-08 2.34130814180666E-08"
+        rpy="0 0 0" />
+      <mass
+        value="0.0589965100226722" />
+      <inertia
+        ixx="7.42445645592684E-06"
+        ixy="4.56414048967829E-10"
+        ixz="-1.42969867005774E-09"
+        iyy="2.58144735603533E-05"
+        iyz="-3.13143898594966E-10"
+        izz="2.58153545022547E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/fr_wheel/fr_roller4_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.298039215686275 0.298039215686275 0.298039215686275 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/fr_wheel/fr_roller4_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="fr_roller4_joint"
+    type="continuous">
+    <origin
+      xyz="-0.0305408337103717 0.0648100014388166 0.0196185482372047"
+      rpy="-0.615479708623746 0.523598775537179 0.615479708675428" />
+    <parent
+      link="fr_wheel_link" />
+    <child
+      link="fr_roller4_link" />
+    <axis
+      xyz="1 0 0" />
+  <dynamics friction="0.2"/>    </joint>
+  <link
+    name="fr_roller5_link">
+    <inertial>
+      <origin
+        xyz="-0.0421465547814703 -1.83382495799744E-07 -3.72002389670278E-07"
+        rpy="0 0 0" />
+      <mass
+        value="0.0589974134292611" />
+      <inertia
+        ixx="7.42468112609943E-06"
+        ixy="3.33232921173566E-10"
+        ixz="6.75982810178588E-10"
+        iyy="2.58156285712957E-05"
+        iyz="2.64895809439292E-10"
+        izz="2.58160310277157E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/fr_wheel/fr_roller5_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.298039215686275 0.298039215686275 0.298039215686275 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/fr_wheel/fr_roller5_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="fr_roller5_joint"
+    type="continuous">
+    <origin
+      xyz="-0.0305408337099969 0.0319551830099068 0.0597000000017039"
+      rpy="5.23694850494388E-30 -5.24239540666827E-11 0.785398163397452" />
+    <parent
+      link="fr_wheel_link" />
+    <child
+      link="fr_roller5_link" />
+    <axis
+      xyz="-1 0 0" />
+  <dynamics friction="0.2"/>    </joint>
+  <link
+    name="fr_roller6_link">
+    <inertial>
+      <origin
+        xyz="-0.0452362721664898 4.23972776331105E-09 -7.68700468833927E-08"
+        rpy="0 0 0" />
+      <mass
+        value="0.0589965100226713" />
+      <inertia
+        ixx="7.42445645588103E-06"
+        ixy="-1.49850532655808E-09"
+        ixz="-8.26808064472233E-11"
+        iyy="2.58154511891978E-05"
+        iyz="5.94569620808802E-11"
+        izz="2.58143768733612E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/fr_wheel/fr_roller6_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.298039215686275 0.298039215686275 0.298039215686275 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/fr_wheel/fr_roller6_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="fr_roller6_joint"
+    type="continuous">
+    <origin
+      xyz="-0.0305408337103716 -0.0196185482385339 0.0648100014388153"
+      rpy="0.615479708746943 -0.523598775622785 0.615479708605525" />
+    <parent
+      link="fr_wheel_link" />
+    <child
+      link="fr_roller6_link" />
+    <axis
+      xyz="-1 0 0" />
+  <dynamics friction="0.2"/>    </joint>
+  <link
+    name="fr_roller7_link">
+    <inertial>
+      <origin
+        xyz="-0.0452677666335161 -5.9527705542628E-08 -4.88204981996532E-08"
+        rpy="0 0 0" />
+      <mass
+        value="0.0589965100226712" />
+      <inertia
+        ixx="7.42445645588966E-06"
+        ixy="-9.51706811210031E-10"
+        ixz="1.16043384944892E-09"
+        iyy="2.5814808249372E-05"
+        iyz="-5.29984855061385E-10"
+        izz="2.58150198131971E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/fr_wheel/fr_roller7_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.298039215686275 0.298039215686275 0.298039215686275 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/fr_wheel/fr_roller7_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="fr_roller7_joint"
+    type="continuous">
+    <origin
+      xyz="-0.0305408337099969 -0.0597000000030332 0.0319551830099054"
+      rpy="1.5707963267949 -0.785398163397448 -7.41384552706205E-11" />
+    <parent
+      link="fr_wheel_link" />
+    <child
+      link="fr_roller7_link" />
+    <axis
+      xyz="-1 0 0" />
+  <dynamics friction="0.2"/>    </joint>
+  <link
+    name="fr_roller8_link">
+    <inertial>
+      <origin
+        xyz="-0.045396208793664 7.45149556224955E-08 1.93461259234695E-08"
+        rpy="0 0 0" />
+      <mass
+        value="0.0589965100226712" />
+      <inertia
+        ixx="7.42445645589709E-06"
+        ixy="3.7713281706829E-10"
+        ixz="-1.45262624240325E-09"
+        iyy="2.58144418470769E-05"
+        iyz="-2.62898896550183E-10"
+        izz="2.58153862155003E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/fr_wheel/fr_roller8_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.298039215686275 0.298039215686275 0.298039215686275 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/fr_wheel/fr_roller8_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="fr_roller8_joint"
+    type="continuous">
+    <origin
+      xyz="-0.0305408337103716 -0.0648100014401446 -0.0196185482385353"
+      rpy="2.52611294496605 -0.52359877553718 -0.615479708675429" />
+    <parent
+      link="fr_wheel_link" />
+    <child
+      link="fr_roller8_link" />
+    <axis
+      xyz="-1 0 0" />
+  <dynamics friction="0.2"/>    </joint>
+
+
+    <joint name="mecanum_platform_fr_joint" type="fixed">
+        <origin
+            xyz="0.2355 0.281 -0.05"
+            rpy="0 0 3.141592"
+            ></origin>
+        <parent
+            link="mecanum_platform"
+            ></parent>
+        <child
+            link="fr_base_link"
+            ></child>
+        <axis
+            xyz="0 1 0"
+            ></axis>
+    <dynamics friction="0.2"/>    </joint>
+
+
+
+
+
+
+ <link
+    name="bl_base_link">
+    <inertial>
+      <origin
+        xyz="-0.0345136836910226 -8.67361737988404E-18 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.0498803432698733" />
+      <inertia
+        ixx="3.19758446844847E-05"
+        ixy="1.25885362986825E-20"
+        ixz="-8.44141425998874E-21"
+        iyy="8.8401109250672E-05"
+        iyz="-3.82424206267608E-21"
+        izz="8.78605196885535E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/bl_wheel/bl_base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/bl_wheel/bl_base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="bl_wheel_link">
+    <inertial>
+      <origin
+        xyz="-0.0636340265120955 -1.62520132284304E-05 -1.19245242467536E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.289889297530353" />
+      <inertia
+        ixx="0.000455671291257263"
+        ixy="1.99047152906806E-07"
+        ixz="3.66554346238113E-07"
+        iyy="0.000561800694206904"
+        iyz="-7.21050221552006E-07"
+        izz="0.000563800091619037" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/bl_wheel/bl_wheel_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/bl_wheel/bl_wheel_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="bl_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="-0.0245 0 0"
+      rpy="-5.246E-42 0 -7.0832E-13" />
+    <parent
+      link="bl_base_link" />
+    <child
+      link="bl_wheel_link" />
+    <axis
+      xyz="-1 0 0" />
+  <dynamics friction="0.2"/>    </joint>
+  <link
+    name="bl_roller1_link">
+    <inertial>
+      <origin
+        xyz="-0.0451302732982578 3.64153152077051E-14 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.0589983168358505" />
+      <inertia
+        ixx="7.42498511233542E-06"
+        ixy="1.30796561313861E-17"
+        ixz="9.55129726201624E-20"
+        iyy="2.58167138099161E-05"
+        iyz="1.55872929762113E-11"
+        izz="2.58168566877013E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/bl_wheel/bl_roller1_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.298039215686275 0.298039215686275 0.298039215686275 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/bl_wheel/bl_roller1_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="bl_roller1_joint"
+    type="continuous">
+    <origin
+      xyz="-0.0305408337099969 -0.0319551830112347 -0.0597000000030344"
+      rpy="-3.14159265353736 5.24258969570128E-11 -0.785398163397447" />
+    <parent
+      link="bl_wheel_link" />
+    <child
+      link="bl_roller1_link" />
+    <axis
+      xyz="-1 0 0" />
+  <dynamics friction="0.2"/>    </joint>
+  <link
+    name="bl_roller2_link">
+    <inertial>
+      <origin
+        xyz="-0.0469837387376095 -4.91079079623091E-08 5.9292249277032E-08"
+        rpy="0 0 0" />
+      <mass
+        value="0.0589965100226715" />
+      <inertia
+        ixx="7.42445645589333E-06"
+        ixy="1.15584257499677E-09"
+        ixz="9.57276974215469E-10"
+        iyy="2.5815014710394E-05"
+        iyz="5.30977849742886E-10"
+        izz="2.581481335218E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/bl_wheel/bl_roller2_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.298039215686275 0.298039215686275 0.298039215686275 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/bl_wheel/bl_roller2_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="bl_roller2_joint"
+    type="continuous">
+    <origin
+      xyz="-0.0305408337103717 0.0196185482372059 -0.0648100014401459"
+      rpy="-2.52611294484285 0.52359877562279 -0.61547970860553" />
+    <parent
+      link="bl_wheel_link" />
+    <child
+      link="bl_roller2_link" />
+    <axis
+      xyz="-1 0 0" />
+  <dynamics friction="0.2"/>    </joint>
+  <link
+    name="bl_roller3_link">
+    <inertial>
+      <origin
+        xyz="-0.0471222075665788 -6.24427436424213E-08 4.50321229195083E-08"
+        rpy="0 0 0" />
+      <mass
+        value="0.0589965100226712" />
+      <inertia
+        ixx="7.4244564558808E-06"
+        ixy="8.77856251666826E-10"
+        ixz="1.21725963621641E-09"
+        iyy="2.58147434096345E-05"
+        iyz="5.12798219421238E-10"
+        izz="2.58150846529244E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/bl_wheel/bl_roller3_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.298039215686275 0.298039215686275 0.298039215686275 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/bl_wheel/bl_roller3_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="bl_roller3_joint"
+    type="continuous">
+    <origin
+      xyz="-0.0305408337099969 0.0597000000017051 -0.0319551830112359"
+      rpy="-1.5707963267949 0.785398163397453 7.41406054996327E-11" />
+    <parent
+      link="bl_wheel_link" />
+    <child
+      link="bl_roller3_link" />
+    <axis
+      xyz="1 0 0" />
+  <dynamics friction="0.2"/>    </joint>
+  <link
+    name="bl_roller4_link">
+    <inertial>
+      <origin
+        xyz="-0.0448281383269245 7.33388385576461E-08 2.34130814180666E-08"
+        rpy="0 0 0" />
+      <mass
+        value="0.0589965100226722" />
+      <inertia
+        ixx="7.42445645592684E-06"
+        ixy="4.56414048967829E-10"
+        ixz="-1.42969867005774E-09"
+        iyy="2.58144735603533E-05"
+        iyz="-3.13143898594966E-10"
+        izz="2.58153545022547E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/bl_wheel/bl_roller4_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.298039215686275 0.298039215686275 0.298039215686275 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/bl_wheel/bl_roller4_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="bl_roller4_joint"
+    type="continuous">
+    <origin
+      xyz="-0.0305408337103717 0.0648100014388166 0.0196185482372047"
+      rpy="-0.615479708623746 0.523598775537179 0.615479708675428" />
+    <parent
+      link="bl_wheel_link" />
+    <child
+      link="bl_roller4_link" />
+    <axis
+      xyz="1 0 0" />
+  <dynamics friction="0.2"/>    </joint>
+  <link
+    name="bl_roller5_link">
+    <inertial>
+      <origin
+        xyz="-0.0421465547814703 -1.83382495799744E-07 -3.72002389670278E-07"
+        rpy="0 0 0" />
+      <mass
+        value="0.0589974134292611" />
+      <inertia
+        ixx="7.42468112609943E-06"
+        ixy="3.33232921173566E-10"
+        ixz="6.75982810178588E-10"
+        iyy="2.58156285712957E-05"
+        iyz="2.64895809439292E-10"
+        izz="2.58160310277157E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/bl_wheel/bl_roller5_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.298039215686275 0.298039215686275 0.298039215686275 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/bl_wheel/bl_roller5_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="bl_roller5_joint"
+    type="continuous">
+    <origin
+      xyz="-0.0305408337099969 0.0319551830099068 0.0597000000017039"
+      rpy="5.23694850494388E-30 -5.24239540666827E-11 0.785398163397452" />
+    <parent
+      link="bl_wheel_link" />
+    <child
+      link="bl_roller5_link" />
+    <axis
+      xyz="-1 0 0" />
+  <dynamics friction="0.2"/>    </joint>
+  <link
+    name="bl_roller6_link">
+    <inertial>
+      <origin
+        xyz="-0.0452362721664898 4.23972776331105E-09 -7.68700468833927E-08"
+        rpy="0 0 0" />
+      <mass
+        value="0.0589965100226713" />
+      <inertia
+        ixx="7.42445645588103E-06"
+        ixy="-1.49850532655808E-09"
+        ixz="-8.26808064472233E-11"
+        iyy="2.58154511891978E-05"
+        iyz="5.94569620808802E-11"
+        izz="2.58143768733612E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/bl_wheel/bl_roller6_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.298039215686275 0.298039215686275 0.298039215686275 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/bl_wheel/bl_roller6_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="bl_roller6_joint"
+    type="continuous">
+    <origin
+      xyz="-0.0305408337103716 -0.0196185482385339 0.0648100014388153"
+      rpy="0.615479708746943 -0.523598775622785 0.615479708605525" />
+    <parent
+      link="bl_wheel_link" />
+    <child
+      link="bl_roller6_link" />
+    <axis
+      xyz="-1 0 0" />
+  <dynamics friction="0.2"/>    </joint>
+  <link
+    name="bl_roller7_link">
+    <inertial>
+      <origin
+        xyz="-0.0452677666335161 -5.9527705542628E-08 -4.88204981996532E-08"
+        rpy="0 0 0" />
+      <mass
+        value="0.0589965100226712" />
+      <inertia
+        ixx="7.42445645588966E-06"
+        ixy="-9.51706811210031E-10"
+        ixz="1.16043384944892E-09"
+        iyy="2.5814808249372E-05"
+        iyz="-5.29984855061385E-10"
+        izz="2.58150198131971E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/bl_wheel/bl_roller7_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.298039215686275 0.298039215686275 0.298039215686275 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/bl_wheel/bl_roller7_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="bl_roller7_joint"
+    type="continuous">
+    <origin
+      xyz="-0.0305408337099969 -0.0597000000030332 0.0319551830099054"
+      rpy="1.5707963267949 -0.785398163397448 -7.41384552706205E-11" />
+    <parent
+      link="bl_wheel_link" />
+    <child
+      link="bl_roller7_link" />
+    <axis
+      xyz="-1 0 0" />
+  <dynamics friction="0.2"/>    </joint>
+  <link
+    name="bl_roller8_link">
+    <inertial>
+      <origin
+        xyz="-0.045396208793664 7.45149556224955E-08 1.93461259234695E-08"
+        rpy="0 0 0" />
+      <mass
+        value="0.0589965100226712" />
+      <inertia
+        ixx="7.42445645589709E-06"
+        ixy="3.7713281706829E-10"
+        ixz="-1.45262624240325E-09"
+        iyy="2.58144418470769E-05"
+        iyz="-2.62898896550183E-10"
+        izz="2.58153862155003E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/bl_wheel/bl_roller8_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.298039215686275 0.298039215686275 0.298039215686275 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_description/meshes/bl_wheel/bl_roller8_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="bl_roller8_joint"
+    type="continuous">
+    <origin
+      xyz="-0.0305408337103716 -0.0648100014401446 -0.0196185482385353"
+      rpy="2.52611294496605 -0.52359877553718 -0.615479708675429" />
+    <parent
+      link="bl_wheel_link" />
+    <child
+      link="bl_roller8_link" />
+    <axis
+      xyz="-1 0 0" />
+  <dynamics friction="0.2"/>    </joint>
+
+    <joint name="mecanum_platform_bl_joint" type="fixed">
+        <origin
+            xyz="-0.2355 -0.281 -0.05"
+            rpy="0 0 0"
+            ></origin>
+        <parent
+            link="mecanum_platform"
+            ></parent>
+        <child
+            link="bl_base_link"
+            ></child>
+        <axis
+            xyz="0 1 0"
+
+            ></axis>
+    <dynamics friction="0.2"/>    </joint>
+
+
+
+
+    <!-- imu -->
+    <link name="imu_link">
+      <inertial>
+        <mass value="0.001"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <inertia ixx="0.0001" ixy="0" ixz="0"
+                 iyy="0.000001" iyz="0"
+                 izz="0.0001"/>
+      </inertial>
+    </link> 
+
+    <joint name="imu_joint" type="fixed">
+      <axis xyz="0 1 0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <parent link="mecanum_platform"/>
+      <child link="imu_link"/>
+    </joint>
+
+
+  <!-- kinect -->
+
+
+    <joint name="kinect_rgb_joint" type="fixed">
+      <origin xyz="${cam_px} ${cam_py} ${cam_pz}" rpy="${cam_or} ${cam_op} ${cam_oy}"/>
+      <parent link="mecanum_platform"/>
+      <child link="kinect_rgb_frame" />
+    </joint>
+    <link name="kinect_rgb_frame">
+      <inertial>
+        <mass value="0.001" />
+        <origin xyz="0 0 0" />
+        <inertia ixx="0.0001" ixy="0.0" ixz="0.0"
+                 iyy="0.0001" iyz="0.0"
+                 izz="0.0001" />
+      </inertial>
+    </link>
+    <joint name="kinect_rgb_optical_joint" type="fixed">
+      <origin xyz="0 0 0" rpy="${-M_PI/2} 0 ${-M_PI/2}" />
+      <parent link="kinect_rgb_frame" />
+      <child link="kinect_rgb_optical_frame" />
+    </joint>
+    <link name="kinect_rgb_optical_frame">
+      <inertial>
+        <mass value="0.001" />
+        <origin xyz="0 0 0" />
+        <inertia ixx="0.0001" ixy="0.0" ixz="0.0"
+                 iyy="0.0001" iyz="0.0"
+                 izz="0.0001" />
+      </inertial>
+    </link>
+
+  <joint name="kinect_joint" type="fixed">
+    <origin xyz="-0.031 ${-cam_py} -0.016" rpy="0 0 0"/>
+    <parent link="kinect_rgb_frame"/>
+    <child link="kinect_link"/>
+  </joint>  
+    <link name="kinect_link">
+    <visual>
+     <origin xyz="0 0 0" rpy="0 0 ${M_PI/2}"/>
+      <geometry>
+       <mesh filename="package://mobile_description/meshes/sensors/kinect.dae"/>
+      </geometry>
+    </visual>
+	  <collision>
+       <origin xyz="0 0 0" rpy="0 0 ${M_PI/2}"/>
+      <geometry>
+       <mesh filename="package://mobile_description/meshes/sensors/kinect.dae"/>
+      </geometry>
+	  </collision>
+    <inertial>
+      <mass value="0.001" />
+      <origin xyz="0 0 0" />
+      <inertia ixx="0.0001" ixy="0.0" ixz="0.0"
+               iyy="0.0001" iyz="0.0"
+               izz="0.0001" />
+    </inertial>
+  </link>
+	  
+  <!-- The fixed joints & links below are usually published by static_transformers launched by the OpenNi launch 
+       files. However, for Gazebo simulation we need them, so we add them here.
+       (Hence, don't publish them additionally!) -->
+	<joint name="kinect_depth_joint" type="fixed">
+	  <origin xyz="0 ${2 * -cam_py} 0" rpy="0 0 0" />
+	  <parent link="kinect_rgb_frame" />
+	  <child link="kinect_depth_frame" />
+	</joint>
+	<link name="kinect_depth_frame">
+    <inertial>
+      <mass value="0.001" />
+      <origin xyz="0 0 0" />
+      <inertia ixx="0.0001" ixy="0.0" ixz="0.0"
+               iyy="0.0001" iyz="0.0"
+               izz="0.0001" />
+    </inertial>
+	</link>
+	<joint name="kinect_depth_optical_joint" type="fixed">
+	  <origin xyz="0 0 0" rpy="${-M_PI/2} 0 ${-M_PI/2}" />
+	  <parent link="kinect_depth_frame" />
+	  <child link="kinect_depth_optical_frame" />
+	</joint>
+	<link name="kinect_depth_optical_frame">
+    <inertial>
+      <mass value="0.001" />
+      <origin xyz="0 0 0" />
+      <inertia ixx="0.0001" ixy="0.0" ixz="0.0"
+               iyy="0.0001" iyz="0.0"
+               izz="0.0001" />
+    </inertial>
+</link>
+
+
+
+
+
+
+
+
+
+
+   <!--transmission-->
+    <transmission name="tran1">
+        <type>transmission_interface/SimpeTransmission</type>
+      <robotNamespace>/mobile_robot</robotNamespace>
+        <joint name = "fr_wheel_joint">
+            <hardwareInterface>PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="motor1">
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+    <transmission name="tran2">
+        <type>transmission_interface/SimpeTransmission</type>
+      <robotNamespace>/mobile_robot</robotNamespace>
+        <joint name="fl_wheel_joint">
+            <hardwareInterface>PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="motor2">
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+    <transmission name="tran3">
+        <type>transmission_interface/SimpeTransmission</type>
+      <robotNamespace>/mobile_robot</robotNamespace>
+        <joint name="br_wheel_joint">
+            <hardwareInterface>PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="motor3">
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+    <transmission name="tran4">
+        <type>transmission_interface/SimpeTransmission</type>
+      <robotNamespace>/mobile_robot</robotNamespace>
+        <joint name="bl_wheel_joint">
+            <hardwareInterface>PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="motor4">
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+
+  
+  <!-- ROS control plugin -->
+  <gazebo>
+    <plugin name="gazebo_ros_control" 
+            filename="libgazebo_ros_control.so">
+      <robotNamespace>/mobile_robot</robotNamespace>
+    </plugin>
+  </gazebo>
+
+
+</robot>
+
