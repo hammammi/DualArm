@@ -1,0 +1,6 @@
+<launch>
+<include file="$(find rplidar_ros)/launch/rplidar.launch" />
+	<node pkg="commander" type="command_node" name="command_node"/>
+  <node pkg="hc_sr04_" type="hc_sr04_test" name="proximity"/>
+
+</launch>
