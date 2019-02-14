@@ -1,7 +1,7 @@
 # DualArm
 DualArmProject
 
-Epos-library : for rasp. in desktop
+Epos-library : for rasp. 
 
 for raspberry pi firefox
 
