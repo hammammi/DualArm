@@ -194,14 +194,19 @@ std::string dec_to_hex(T dec, int NbofByte){
     return s_LH;
 }
 
-int hexarray_to_int(unsigned char *buffer){
+int *hexarray_to_int(unsigned char *buffer){
 //    int length = sizeof(buffer)/ sizeof(*buffer);
     int length = 4;
-    int hextoint = 0;
+    int hextoint_1 = 0;
+    int hextoint_2 = 0;
+    static int hextoint[2];
     for (int i=0; i<length; i++)
     {
-        hextoint += (buffer[i] << 8*i);
+        hextoint_1 += (buffer[i] << 8*i);
+        hextoint_2 += (buffer[i+4] << 8*i);
     }
+    hextoint[0] = hextoint_1;
+    hextoint[1] = hextoint_2;
 
     return hextoint;
 }
@@ -236,7 +241,7 @@ void commandCallback(const mobile_control::motorMsg::ConstPtr& msg)
         data = stringappend(Control_Enable, vel_desired_hex[i]);
         hexstring2data((char *) data.c_str(), frame.data, 8);
         write(s, &frame, sizeof(struct can_frame));
-	ros::Duration(0.0005).sleep();
+	ros::Duration(0.0001).sleep();
     }
 
     //ros::Time finish = ros::Time::now();
@@ -341,7 +346,8 @@ int main(int argc, char **argv)
     //}
 
     ros::Subscriber sub = n.subscribe("input_msg", 1, commandCallback);
-    ros::Publisher measure_pub = n.advertise<epos_tutorial::realVel>("measure", 100);
+    ros::Publisher measure_pub = n.advertise<epos_tutorial::realVel>("measure", 1);
+    ros::Publisher measure_p_pub = n.advertise<epos_tutorial::realVel>("measure_p", 1);
     ros::Rate loop_rate(100);
 
     iov.iov_base = &frame_get;
@@ -355,15 +361,17 @@ int main(int argc, char **argv)
     canmsg.msg_controllen = sizeof(ctrlmsg);
     canmsg.msg_flags = 0;
     sleep(1);
-
+    
     int nnbytes = 0;
     struct timeval tv;
-    tv.tv_sec = 0;
-    tv.tv_usec = 10;
+    tv.tv_sec = 1;
+    tv.tv_usec = 50;
     setsockopt(s, SOL_SOCKET, SO_RCVTIMEO, (const char*)&tv, sizeof tv);
 
-    epos_tutorial::realVel msg;
-
+    epos_tutorial::realVel msg, msg_p;
+    
+    ros::Time old = ros::Time::now();
+    
     while (ros::ok())
     {
         stringstream ss;
@@ -372,34 +380,32 @@ int main(int argc, char **argv)
         for (int i=0; i<Id_length;i++)
         {
             //stringstream sss;
-            rtr = stringappend(COB_ID_Tx[i][3], "#R");
+            rtr = stringappend(COB_ID_Tx[i][1], "#R");
 	    //LogInfo("rtr ready");
             required_mtu = parse_canframe((char*)(rtr.c_str()), &frame_fd);
 	    //LogInfo("rtr parse");
             write(s, &frame_fd, required_mtu);
 	    //LogInfo("rtr write");
-	    //sleep(0.001);
-            //sleep(0.01);
-	        ros::Duration(0.0005).sleep();
+	    ros::Duration(0.00005).sleep();
             nnbytes = recvmsg(s,&canmsg, 0);
-            if ((size_t )nnbytes != CAN_MTU && (size_t )nnbytes != CANFD_MTU){
-
-            }
-            else
-            {
-                msg.realVel[i] = hexarray_to_int(frame_get.data);
-            }
+	    if((size_t)nnbytes != CAN_MTU && (size_t)nnbytes != CANFD_MTU){}
+	    else{
+                int *posvel = hexarray_to_int(frame_get.data);
+		msg_p.realVel[i] = posvel[0];
+		msg.realVel[i] = posvel[1];
+	    }
         }
-	
+	measure_p_pub.publish(msg_p);
         measure_pub.publish(msg);
 
         ros::spinOnce();
 	ros::Time end = ros::Time::now();
-	if((end-begin).toSec()>0.02){
+	if((end-old).toSec()>0.02){
 	    ss<< (end-begin);
 	    LogInfo(ss.str());
 	}
-        loop_rate.sleep();
+	old = end;
+	loop_rate.sleep();
     }
 
     // Reset Remote Node
@@ -422,3 +428,4 @@ int main(int argc, char **argv)
 
     return 0;
 }
+
