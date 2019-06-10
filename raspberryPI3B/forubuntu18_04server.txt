@@ -31,11 +31,10 @@ $ sudo rm /var/lib/apt/lists/* -vf   // 문제되는 파일 삭제
 마친 후 
 
 $ sudo apt-get install ubuntu-desktop  // ubuntu-desktop 설치
-$ sudo apt-get install lxde  // lxde 설치
+$ sudo apt-get install lxde  // lxde 설치 > lightdm도 함께 설치되는 듯
 
 중간에 gdm3와 lightdm의 선택지가 나오면 lightdm 선택
 
-$ sudo apt-get install lightdm   // lightdm 설치
 $ sudo reboot   // 재부팅
 
 그러면 익숙한 gui 의 login 창이 뜬다.
