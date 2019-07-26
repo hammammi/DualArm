@@ -1,0 +1,6 @@
+# for using GPIO pin
+
+
+SUBSYSTEM=="gpio*", ACTION=="add",PROGRAM="/bin/sh -c 'chown -R root:gpio /sys/class/gpio && chmod -R 777 /sys/class/gpio; chown -R root:gpio /sys/devices/virtual/gpio && chmod -R 777 /sys/devices/virtual/gpio'"
+
+SUBSYSTEM=="gpio", ACTION=="add",PROGRAM="/bin/sh -c 'chown -R root:gpio /sys%p && chmod -R 777 /sys%p'"
