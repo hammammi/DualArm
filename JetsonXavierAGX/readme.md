@@ -1,4 +1,4 @@
-folders in this folder are for jetson Xavier catkin_ws/src
+**for jetson Xavier AXG
 
 rules files must be in /etc/udev/rules.d
 
