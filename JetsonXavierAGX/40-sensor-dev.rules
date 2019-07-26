@@ -1,3 +1,0 @@
-# Device rules for sensors
-
-SUBSYSTEM=="usb",ATTR{idVendor}=="10c4",ATTR{idProduct}=="ea60",MODE="0777"
