@@ -19,12 +19,15 @@ $ sudo route add 192.168.1.202 eth2
 
 test
 
-$ roslaunch velodyne_pointcloud VLP16_points.launch
+$ roslaunch velodyne_pointcloud dual_VLP16_points.launch
 
 rostopic list와 echo로 topic이 잘 나오는지 확인
 
 
 fixde frame으로 rviz를 통한 확인
-$ rosrun rviz rviz -f velodyne
-displays에서 add-pointcloud2 /velodyne_points
+
+$ rosrun rviz rviz -f vlp1
+displays에서 add-pointcloud2 vlp1/velodyne_points
+
+아직 frame을 및 TF가 없어서 동시에 보진 못함
 
