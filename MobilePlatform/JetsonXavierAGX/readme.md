@@ -6,6 +6,8 @@ rules files must be in /etc/udev/rules.d
 
 $ sudo apt-get install ros-melodic-velodyne
 
+dual_VLP16_points.launch >> /opt/ros/melodic/share/velodyne_pointcloud/launch
+
 connect lidars
 (이전에 각 lidar의 ip 변경 필요)
 
