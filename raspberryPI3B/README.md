@@ -29,7 +29,7 @@ $sudo modprobe slcan
 
 - Raspberry Pi CAN communication
 
-$ sudo slcand -o -c -f -s4 /dev/ttyUSB0 slcan0
+$ sudo slcand -o -c -f -s8 /dev/ttyUSB0 slcan0
 
 $ sudo ifconfig slcan0 up
 
