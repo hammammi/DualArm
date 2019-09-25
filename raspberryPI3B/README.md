@@ -24,12 +24,12 @@ $ sudo apt-get install can-utils
 사용할 때마다 terminal 창에 써야 하는듯
 
 $ sudo modprobe can
-$sudo modprobe slcan
+$ sudo modprobe slcan
 
 
-- Raspberry Pi CAN communication
+- CAN communication
 
-$ sudo slcand -o -c -f -s8 /dev/ttyUSB0 slcan0
+$ sudo slcand -o -c -f -s8 /dev/ttyUSBx slcan0
 
 $ sudo ifconfig slcan0 up
 
@@ -37,5 +37,9 @@ $ sudo ifconfig slcan0 up
 
 $ candump slcan0
 
+- CANUSB serial port latency set up
 
+$ sudo apt-get install setserial
+
+$ setserial /dev/ttyUSBx low_latency
 
