@@ -1,6 +1,0 @@
-float64 x
-float64 y
-float64 qx
-float64 qy
-float64 qz
-float64 qw
