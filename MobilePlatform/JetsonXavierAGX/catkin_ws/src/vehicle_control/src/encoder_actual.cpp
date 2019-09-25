@@ -59,8 +59,8 @@ void encoderCallback(const epos_tutorial::realVel::ConstPtr& motors){
 
     w[0] = w[0];
     w[1] = -w[1];
-    w[2] = w[2];
-    w[3] = -w[3];
+    w[2] = -w[2];
+    w[3] = w[3];
 
     w[0] = (double) w[0];
     w[1] = (double) w[1];
