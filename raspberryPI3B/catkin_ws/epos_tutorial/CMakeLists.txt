@@ -12,6 +12,7 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
   message_generation
+  tf
 )
 
 ## System dependencies are found with CMake's conventions
@@ -27,32 +28,12 @@ find_package(catkin REQUIRED COMPONENTS
 ## Declare ROS messages, services and actions ##
 ################################################
 
-## To declare and build messages, services or actions from within this
-## package, follow these steps:
-## * Let MSG_DEP_SET be the set of packages whose message types you use in
-##   your messages/services/actions (e.g. std_msgs, actionlib_msgs, ...).
-## * In the file package.xml:
-##   * add a build_depend tag for "message_generation"
-##   * add a build_depend and a run_depend tag for each package in MSG_DEP_SET
-##   * If MSG_DEP_SET isn't empty the following dependency has been pulled in
-##     but can be declared for certainty nonetheless:
-##     * add a run_depend tag for "message_runtime"
-## * In this file (CMakeLists.txt):
-##   * add "message_generation" and every package in MSG_DEP_SET to
-##     find_package(catkin REQUIRED COMPONENTS ...)
-##   * add "message_runtime" and every package in MSG_DEP_SET to
-##     catkin_package(CATKIN_DEPENDS ...)
-##   * uncomment the add_*_files sections below as needed
-##     and list every .msg/.srv/.action file to be processed
-##   * uncomment the generate_messages entry below
-##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
-
 ## Generate messages in the 'msg' folder
 add_message_files(
     FILES
     Vel.msg
     realVel.msg
-	DesiredVel.msg
+    DesiredVel.msg
 #   Message1.msg
 #   Message2.msg
 )
@@ -145,17 +126,13 @@ add_executable(commander src/commander.cpp)
 target_link_libraries(commander ${catkin_LIBRARIES})
 add_dependencies(commander epos_tutorial_generate_messages_cpp)
 
-add_executable(controller src/controller.cpp)
-target_link_libraries(controller ${catkin_LIBRARIES} /opt/EposCmdLib_6.3.1.0/lib/armv7hf/libEposCmd.so.6.3.1.0)
-add_dependencies(controller epos_tutorial_generate_messages_cpp)
+add_executable(controller src/controller_odom_pdo.cpp)
+target_link_libraries(controller_odom_pdo ${catkin_LIBRARIES} /opt/EposCmdLib_6.3.1.0/lib/armv7hf/libEposCmd.so.6.3.1.0)
+add_dependencies(controller_odom_pdo epos_tutorial_generate_messages_cpp)
 
 add_executable(controller_pdo src/controller_pdo.cpp)
 target_link_libraries(controller_pdo ${catkin_LIBRARIES})
 add_dependencies(controller_pdo epos_tutorial_generate_messages_cpp)
-
-add_executable(motor_sensor src/motor_sensor.cpp)
-target_link_libraries(motor_sensor ${catkin_LIBRARIES})
-add_dependencies(motor_sensor epos_tutorial_generate_messages_cpp)
 
 add_executable(vel_con_server src/vel_con_server.cpp)
 target_link_libraries(vel_con_server ${catkin_LIBRARIES} /opt/EposCmdLib_6.3.1.0/lib/armv7hf/libEposCmd.so.6.3.1.0)
