@@ -126,7 +126,7 @@ add_executable(commander src/commander.cpp)
 target_link_libraries(commander ${catkin_LIBRARIES})
 add_dependencies(commander epos_tutorial_generate_messages_cpp)
 
-add_executable(controller src/controller_odom_pdo.cpp)
+add_executable(controller_odom_pdo src/controller_odom_pdo.cpp)
 target_link_libraries(controller_odom_pdo ${catkin_LIBRARIES} /opt/EposCmdLib_6.3.1.0/lib/armv7hf/libEposCmd.so.6.3.1.0)
 add_dependencies(controller_odom_pdo epos_tutorial_generate_messages_cpp)
 
