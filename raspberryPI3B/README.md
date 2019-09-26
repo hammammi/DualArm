@@ -21,7 +21,7 @@ https://wiki.linklayer.com/index.php/CANtact_on_Raspberry_Pi
 
 $ sudo apt-get install can-utils
 
-사용할 때마다 terminal 창에 써야 하는듯
+
 
 $ sudo modprobe can
 $ sudo modprobe slcan
