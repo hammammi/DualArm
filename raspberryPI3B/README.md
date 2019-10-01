@@ -41,5 +41,5 @@ $ candump slcan0
 
 $ sudo apt-get install setserial
 
-$ setserial /dev/ttyUSBx low_latency
+$ sudo setserial /dev/ttyUSBx low_latency
 
