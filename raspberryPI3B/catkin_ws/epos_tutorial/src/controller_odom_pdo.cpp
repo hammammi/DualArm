@@ -53,14 +53,7 @@ unsigned short COB_ID_Tx[][4] = {{0x1A1, 0x2A1, 0x3A1, 0x4A1},
 				 {0x1A2, 0x2A2, 0x3A2, 0x4A2},
 				 {0x1A3, 0x2A3, 0x3A3, 0x4A3},
 				 {0x1A4, 0x2A4, 0x3A4, 0x4A4}};
-string COB_ID_Rx2[][4] = {{"221", "321", "421", "521"},
-                          {"222", "322", "422", "522"},
-                          {"223", "323", "423", "523"},
-                          {"224", "324", "424", "524"}};
-/*string COB_ID_Tx[][4] = {{"1A1", "2A1", "3A1", "4A1"},
-                         {"1A2", "2A2", "3A2", "4A2"},
-                         {"1A3", "2A3", "3A3", "4A3"},
-                         {"1A4", "2A4", "3A4", "4A4"}};*/
+int COB_ID_CHK[] = {673, 674, 675, 676}; // COB_ID_TX in DEC
 
 
 // platform param
@@ -75,10 +68,6 @@ double rpm_to_radps = 2.0 * PI / 60;
 double linear_x_d = 0;
 double linear_y_d = 0;
 double angular_z_d = 0;
-
-
-
-
 
 unsigned char asc2nibble(char c) {
 
@@ -440,14 +429,11 @@ int main(int argc, char **argv)
     {
         //struct can_frame frame1;
         // Modes of operation (PVM)
-//        string st = stringappend(COB_ID_Rx2[i][1], "#000003");
-//        required_mtu = parse_canframe((char*)(st.c_str()), &frame_fd);
         frame.can_id  = COB_ID_Rx[i][1];
         frame.can_dlc = 3;
         frame.data[0] = 0x00;
         frame.data[1] = 0x00;
         frame.data[2] = 0x03;
-//        write(s, &frame_fd, required_mtu);
         write(s, &frame, sizeof(struct can_frame));
         LogInfo("Velocitiy mode initialized");
         sleep(1);
@@ -458,9 +444,6 @@ int main(int argc, char **argv)
         frame.data[0] = 0x06;
         frame.data[1] = 0x00;
         write(s, &frame, sizeof(struct can_frame));
-//        string st = stringappend(COB_ID_Rx2[i][0], "#0600");
-//        required_mtu = parse_canframe((char*)(st.c_str()), &frame_fd);
-//        write(s, &frame_fd, required_mtu);
         LogInfo("Shutdown controlword");
         sleep(1);
 
@@ -470,9 +453,6 @@ int main(int argc, char **argv)
         frame.data[0] = 0x0F;
         frame.data[1] = 0x00;
         write(s, &frame, sizeof(struct can_frame));
-//        st = stringappend(COB_ID_Rx2[i][0], "#0F00");
-//        required_mtu = parse_canframe((char*)(st.c_str()), &frame_fd);
-//        write(s, &frame_fd, required_mtu);
         LogInfo("Enable controlword");
         sleep(1);
     }
@@ -523,26 +503,16 @@ int main(int argc, char **argv)
 //        ros::Time begin = ros::Time::now();
         //epos_tutorial::realVel msg;
         for (int i=0; i<Id_length;i++)
-        {
-
-            //stringstream sss;
-//            rtr = stringappend(COB_ID_Tx[i][1], "#R");
-            //LogInfo("rtr ready");
-//            required_mtu = parse_canframe((char*)(rtr.c_str()), &frame_fd);
-            //LogInfo("rtr parse");
-//            write(s, &frame_fd, required_mtu);
-            //LogInfo("rtr write");
+        {            
             frame.can_id  = COB_ID_Tx[i][1] | CAN_RTR_FLAG;
             write(s, &frame, sizeof(struct can_frame));
 //            ros::Duration(0.00005).sleep();
             nnbytes = recvmsg(s,&canmsg, 0);
-            msg.realVel[i] = hexarray_to_int(frame_get.data,4);
-//            if((size_t)nnbytes != CAN_MTU && (size_t)nnbytes != CANFD_MTU){}
-//            else{
-//                int *posvel = hexarray_to_int(frame_get.data);
-//                msg_p.realVel[i] = posvel[0];
-//                msg.realVel[i] = posvel[1];
-//            }
+			if (frame_get.can_id == COB_ID_CHK[i])
+			{
+				msg.realVel[i] = hexarray_to_int(frame_get.data,4);
+//				ROS_INFO("%d", frame_get.can_id);
+			}
         }
 //        measure_p_pub.publish(msg_p);
 
