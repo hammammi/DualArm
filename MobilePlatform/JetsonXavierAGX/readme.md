@@ -33,3 +33,6 @@ displays에서 add-pointcloud2 vlp1/velodyne_points
 
 아직 frame을 및 TF가 없어서 동시에 보진 못함
 
+-- for realsense
+
+참고  https://github.com/jetsonhacks/buildLibrealsense2Xavier
