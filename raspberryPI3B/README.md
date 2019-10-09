@@ -26,7 +26,7 @@ $ sudo apt-get install can-utils
 $ sudo modprobe can
 $ sudo modprobe slcan
 
-
+// CANUSB
 - CAN communication
 
 $ sudo slcand -o -c -f -s8 /dev/ttyUSBx slcan0
@@ -42,4 +42,19 @@ $ candump slcan0
 $ sudo apt-get install setserial
 
 $ sudo setserial /dev/ttyUSBx low_latency
+
+// PiCAN2 (user_guide 참고)
+- Add overlays
+
+$ sudo nano /boot/config.txt
+
+Add
+
+dtparam=spi=on
+dtoverlay=mcp2515-can0,oscillator=16000000,interrupt=25
+dtoverlay=spi-bcm2835-overlay
+
+- Bring up interface
+
+$ sudo /sbin/ip link set can0 up type can bitrate 1000000
 
