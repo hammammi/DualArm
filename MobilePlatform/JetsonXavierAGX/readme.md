@@ -37,6 +37,8 @@ displays에서 add-pointcloud2 vlp1/velodyne_points
 
 참고  https://github.com/jetsonhacks/buildLibrealsense2Xavier
 
+위 사이트를 참고하기 위해 L4T 32.1 버전이 필요하여 Jetpack SDK 사용시 4.2 버전으로 flash해야한다.
+
 T265를 사용하기 위해
  ./installLibrealsense.sh 실행 전 cmake 부분에 -DBUILD_WITH_TM2=true 추가
  
