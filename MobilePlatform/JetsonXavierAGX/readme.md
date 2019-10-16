@@ -10,6 +10,7 @@ rules files must be in /etc/udev/rules.d
 
 T265를 사용하기 위해
  ./installLibrealsense.sh 실행 전 cmake 부분에 -DBUILD_WITH_TM2=true 추가
+ LIBREALSENSE_VERSION=v2.25.0. 으로 변경 (추후 최신버전으로 변경해야 할지는 모르겠음)
  
  Kernel은 제대로 업데이트 된건지는 잘모르겠다. uname -r 에서 변화는 없었다
 
