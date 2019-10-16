@@ -2,6 +2,17 @@
 
 rules files must be in /etc/udev/rules.d
 
+-- for realsense
+
+참고  https://github.com/jetsonhacks/buildLibrealsense2Xavier
+
+위 사이트를 참고하기 위해 L4T 32.1 버전이 필요하여 Jetpack SDK 사용시 4.2 버전으로 flash해야한다.
+
+T265를 사용하기 위해
+ ./installLibrealsense.sh 실행 전 cmake 부분에 -DBUILD_WITH_TM2=true 추가
+ 
+ Kernel은 제대로 업데이트 된건지는 잘모르겠다. uname -r 에서 변화는 없었다
+
 -- for lidar (wiki 참고)
 
 $ sudo apt-get install ros-melodic-velodyne
@@ -31,16 +42,7 @@ fixde frame으로 rviz를 통한 확인
 $ rosrun rviz rviz -f vlp1
 displays에서 add-pointcloud2 vlp1/velodyne_points
 
-아직 frame을 및 TF가 없어서 동시에 보진 못함
+아직 frame 및 TF가 없어서 동시에 보진 못함
 
--- for realsense
 
-참고  https://github.com/jetsonhacks/buildLibrealsense2Xavier
-
-위 사이트를 참고하기 위해 L4T 32.1 버전이 필요하여 Jetpack SDK 사용시 4.2 버전으로 flash해야한다.
-
-T265를 사용하기 위해
- ./installLibrealsense.sh 실행 전 cmake 부분에 -DBUILD_WITH_TM2=true 추가
- 
- Kernel은 제대로 업데이트 된건지는 잘모르겠다. uname -r 에서 변화는 없었다
 
