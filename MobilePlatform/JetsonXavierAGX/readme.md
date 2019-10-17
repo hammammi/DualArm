@@ -26,7 +26,7 @@ T265를 사용하기 위해
 
 $ sudo apt-get install ros-melodic-velodyne
 
-dual_VLP16_points.launch >> /opt/ros/melodic/share/velodyne_pointcloud/launch
+dual_VLP16_points.launch >> /opt/ros/melodic/share/velodyne_pointcloud/launch 로 넣기
 
 connect lidars
 (이전에 각 lidar의 ip 변경 필요)
