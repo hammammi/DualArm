@@ -11,8 +11,16 @@ rules files must be in /etc/udev/rules.d
 T265를 사용하기 위해
  ./installLibrealsense.sh 실행 전 cmake 부분에 -DBUILD_WITH_TM2=true 추가
  LIBREALSENSE_VERSION=v2.25.0. 으로 변경 (추후 최신버전으로 변경해야 할지는 모르겠음)
+ --> librealsesnse2가 설치되며 사용된다.
  
  Kernel은 제대로 업데이트 된건지는 잘모르겠다. uname -r 에서 변화는 없었다
+ 
+ 참고 https://github.com/IntelRealSense/realsense-ros
+ 
+ realsense-ros 사용 시 dependency package를 우선적으로 설치 필요, > travis.yml 파일 참고.
+ ros melodic version이 아직 공식적으로 나오지 않아 주의. ubuntu 18.04, melodic에 설치 시 kinetic->melodic으로 변경하여 설치
+ 
+ failed to load nodelet 에러가 나타나는 경우 rosnode kill 이용
 
 -- for lidar (wiki 참고)
 
