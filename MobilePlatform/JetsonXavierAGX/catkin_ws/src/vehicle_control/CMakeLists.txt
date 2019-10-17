@@ -48,28 +48,33 @@ include_directories(
 
 
 add_executable(mobile_controller src/mobile_controller.cpp)
+add_dependencies(mobile_controller vehicle_control_generate_messages_cpp ${catkin_EXPORTED_TARGETS})
 target_link_libraries(mobile_controller ${catkin_LIBRARIES})
-add_dependencies(mobile_controller vehicle_control_generate_messages_cpp)
+
 
 add_executable(encoder_actual src/encoder_actual.cpp)
+add_dependencies(encoder_actual vehicle_control_generate_messages_cpp ${catkin_EXPORTED_TARGETS})
 target_link_libraries(encoder_actual ${catkin_LIBRARIES})
-add_dependencies(encoder_actual vehicle_control_generate_messages_cpp)
+
 
 add_executable(experiment_rectangle src/experiment_rectangle.cpp)
+add_dependencies(experiment_rectangle vehicle_control_generate_messages_cpp ${catkin_EXPORTED_TARGETS})
 target_link_libraries(experiment_rectangle ${catkin_LIBRARIES})
-add_dependencies(experiment_rectangle vehicle_control_generate_messages_cpp)
+
 
 add_executable(experiment_diamond src/experiment_diamond.cpp)
+add_dependencies(experiment_diamond vehicle_control_generate_messages_cpp ${catkin_EXPORTED_TARGETS})
 target_link_libraries(experiment_diamond ${catkin_LIBRARIES})
-add_dependencies(experiment_diamond vehicle_control_generate_messages_cpp)
+
 
 add_executable(vel_cmd src/vel_cmd.cpp)
+add_dependencies(vel_cmd vehicle_control_generate_messages_cpp ${catkin_EXPORTED_TARGETS})
 target_link_libraries(vel_cmd ${catkin_LIBRARIES})
-add_dependencies(vel_cmd vehicle_control_generate_messages_cpp)
+
 
 add_executable(vel_cmd_circle_fix src/vel_cmd_circle_fix.cpp)
+add_dependencies(vel_cmd_circle_fix vehicle_control_generate_messages_cpp ${catkin_EXPORTED_TARGETS})
 target_link_libraries(vel_cmd_circle_fix ${catkin_LIBRARIES})
-add_dependencies(vel_cmd_circle_fix vehicle_control_generate_messages_cpp)
 
 add_executable(experiment_route1 src/experiment_route1.cpp)
 target_link_libraries(experiment_route1 ${catkin_LIBRARIES})
