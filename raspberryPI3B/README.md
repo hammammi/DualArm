@@ -48,7 +48,7 @@ $ sudo setserial /dev/ttyUSBx low_latency
 
 $ sudo nano /boot/config.txt  
 
-Add  
+Add at SPI 부분 
 
 dtparam=spi=on  
 dtoverlay=mcp2515-can0,oscillator=16000000,interrupt=25  
