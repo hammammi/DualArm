@@ -65,14 +65,9 @@ in /etc/network/interfaces, copy and paste
 ````
 auto can0  
 iface can0 inet manual  
-    pre-up ip link set $IFACE type can bitrate 500000 listen-only off  
+    pre-up ip link set $IFACE type can bitrate 1000000 listen-only off  
     up /sbin/ifconfig $IFACE up  
     down /sbin/ifconfig $IFACE down  
 ````
- 
- https://www.raspberrypi.org/forums/viewtopic.php?t=190868
-http://youness.net/raspberry-pi/raspberry-pi-can-bus
-https://github.com/raspberrypi/linux/issues/2767
-
-https://www.raspberrypi.org/forums/viewtopic.php?t=217454  
-http://www.embeddedpi.com/documentation/isolated-canbus/mypi-industrial-raspberry-pi-can-bus-card-configuration
+   
+참고 : http://www.embeddedpi.com/documentation/isolated-canbus/mypi-industrial-raspberry-pi-can-bus-card-configuration
