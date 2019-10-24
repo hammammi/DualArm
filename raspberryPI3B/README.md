@@ -29,32 +29,34 @@ $ sudo modprobe slcan
 // CANUSB
 - CAN communication
 
-$ sudo slcand -o -c -f -s8 /dev/ttyUSBx slcan0
+$ sudo slcand -o -c -f -s8 /dev/ttyUSBx slcan0  
 
-$ sudo ifconfig slcan0 up
+$ sudo ifconfig slcan0 up  
 
-- CAN Communication monitor
+- CAN Communication monitor  
 
-$ candump slcan0
+$ candump slcan0  
 
-- CANUSB serial port latency set up
+- CANUSB serial port latency set up  
 
-$ sudo apt-get install setserial
+$ sudo apt-get install setserial  
 
-$ sudo setserial /dev/ttyUSBx low_latency
+$ sudo setserial /dev/ttyUSBx low_latency  
 
-// PiCAN2 (user_guide 참고)
-- Add overlays
+// PiCAN2 (user_guide 참고)  
+- Add overlays  
 
-$ sudo nano /boot/config.txt
+$ sudo nano /boot/config.txt  
 
-Add
+Add  
 
-dtparam=spi=on
-dtoverlay=mcp2515-can0,oscillator=16000000,interrupt=25
-dtoverlay=spi-bcm2835-overlay
+dtparam=spi=on  
+dtoverlay=mcp2515-can0,oscillator=16000000,interrupt=25  
+dtoverlay=spi-bcm2835-overlay  
 
-- Bring up interface
+- Bring up interface  
 
-$ sudo /sbin/ip link set can0 up type can bitrate 1000000
+$ sudo /sbin/ip link set can0 up type can bitrate 1000000  
 
+
+http://youness.net/raspberry-pi/raspberry-pi-can-bus
