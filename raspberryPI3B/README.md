@@ -61,3 +61,5 @@ $ sudo /sbin/ip link set can0 up type can bitrate 1000000
 https://www.raspberrypi.org/forums/viewtopic.php?t=190868
 http://youness.net/raspberry-pi/raspberry-pi-can-bus
 https://github.com/raspberrypi/linux/issues/2767
+
+https://www.raspberrypi.org/forums/viewtopic.php?t=217454  
