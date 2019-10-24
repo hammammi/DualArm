@@ -58,5 +58,5 @@ dtoverlay=spi-bcm2835-overlay
 
 $ sudo /sbin/ip link set can0 up type can bitrate 1000000  
 
-
+https://www.raspberrypi.org/forums/viewtopic.php?t=190868
 http://youness.net/raspberry-pi/raspberry-pi-can-bus
