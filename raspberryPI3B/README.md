@@ -64,9 +64,9 @@ in /etc/network/interfaces, copy and paste
 
 auto can0  
 iface can0 inet manual  
-    pre-up ip link set $IFACE type can bitrate 500000 listen-only off  
-    up /sbin/ifconfig $IFACE up  
-    down /sbin/ifconfig $IFACE down  
+''''pre-up ip link set $IFACE type can bitrate 500000 listen-only off  
+''''up /sbin/ifconfig $IFACE up  
+''''down /sbin/ifconfig $IFACE down  
 
  
  https://www.raspberrypi.org/forums/viewtopic.php?t=190868
