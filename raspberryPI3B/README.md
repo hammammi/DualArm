@@ -63,3 +63,4 @@ http://youness.net/raspberry-pi/raspberry-pi-can-bus
 https://github.com/raspberrypi/linux/issues/2767
 
 https://www.raspberrypi.org/forums/viewtopic.php?t=217454  
+http://www.embeddedpi.com/documentation/isolated-canbus/mypi-industrial-raspberry-pi-can-bus-card-configuration
