@@ -1,0 +1,11 @@
+<launch>
+
+    <node pkg="vehicle_control"
+          type="encoder_quat"
+          name="encoder_quat"/>
+  
+    <node pkg="vehicle_control"
+          type="mobile_controller_enc"
+          name="ctrl_enc_quat"/>
+
+</launch>

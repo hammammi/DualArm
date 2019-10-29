@@ -1,0 +1,7 @@
+<launch>
+  
+    <node pkg="vehicle_control"
+          type="mobile_controller_vio"
+          name="ctrl_vio"/>
+
+</launch>
