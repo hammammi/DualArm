@@ -47,14 +47,24 @@ include_directories(
 )
 
 
-add_executable(mobile_controller src/mobile_controller.cpp)
-add_dependencies(mobile_controller vehicle_control_generate_messages_cpp ${catkin_EXPORTED_TARGETS})
-target_link_libraries(mobile_controller ${catkin_LIBRARIES})
+add_executable(mobile_controller_vio src/mobile_controller_vio.cpp)
+add_dependencies(mobile_controller_vio vehicle_control_generate_messages_cpp ${catkin_EXPORTED_TARGETS})
+target_link_libraries(mobile_controller_vio ${catkin_LIBRARIES})
 
 
-add_executable(encoder_actual src/encoder_actual.cpp)
-add_dependencies(encoder_actual vehicle_control_generate_messages_cpp ${catkin_EXPORTED_TARGETS})
-target_link_libraries(encoder_actual ${catkin_LIBRARIES})
+add_executable(mobile_controller_enc src/mobile_controller_enc.cpp)
+add_dependencies(mobile_controller_enc vehicle_control_generate_messages_cpp ${catkin_EXPORTED_TARGETS})
+target_link_libraries(mobile_controller_enc ${catkin_LIBRARIES})
+
+
+add_executable(encoder_quat src/encoder_quat.cpp)
+add_dependencies(encoder_quat vehicle_control_generate_messages_cpp ${catkin_EXPORTED_TARGETS})
+target_link_libraries(encoder_quat ${catkin_LIBRARIES})
+
+
+add_executable(encoder_only src/encoder_only.cpp)
+add_dependencies(encoder_only vehicle_control_generate_messages_cpp ${catkin_EXPORTED_TARGETS})
+target_link_libraries(encoder_only ${catkin_LIBRARIES})
 
 
 add_executable(experiment_rectangle src/experiment_rectangle.cpp)
