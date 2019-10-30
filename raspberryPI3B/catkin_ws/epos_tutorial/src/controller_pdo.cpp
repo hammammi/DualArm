@@ -289,7 +289,8 @@ int main(int argc, char **argv)
     char ctrlmsg[CMSG_SPACE(sizeof(struct timeval) + 3*sizeof(struct timespec) + sizeof(__u32))];
     struct canfd_frame frame_get;
 
-    const char *ifname = "slcan0";
+    //const char *ifname = "slcan0";    // for USB-CAN
+    const char *ifname = "can0";        // for PiCAN2 board
 
     if((s = socket(PF_CAN, SOCK_RAW, CAN_RAW)) < 0) {
         perror("Error while opening socket");
