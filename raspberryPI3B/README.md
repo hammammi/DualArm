@@ -82,5 +82,5 @@ error
 --> No ruls to make target 'arch/arm/tools/gen-mach-types' 또는 'arch/arm/tools/mach-types'   
 --> fatal error: tools/be_byteshift.h: No such file or directory   
  : 위 참고 github에서 파일을 직접 다운받아 위치에 넣는 형식으로 해결     
-따라서 그냥 rpi23-4.9.80-xeno3 의 master branch를 다운받은 다음 직접 deploy 하는 것이 덜 귀찮을 것이다.
+따라서 그냥 rpi23-4.9.80-xeno3 의 master branch를 다운받은 다음 직접 deploy 하는 것이 덜 귀찮을 것이다.   https://gitlab.denx.de/Xenomai/xenomai/-/wikis/Start_Here
  
