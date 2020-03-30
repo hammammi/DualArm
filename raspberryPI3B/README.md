@@ -14,17 +14,12 @@ $ sudo chown -R $USER /opt
 - Install slcan module to Raspberry Pi </br>
 https://wiki.linklayer.com/index.php/CANtact_on_Raspberry_Pi
 
--- > 따라서 진행해보았으나 ubuntu 18.04가 사용하는 kernel에서는 run rpi-source 부분이 진행되지 않음.
--- > 그냥 ubuntu 는 raspberry 상에서 너무 느려 사용 불가능, topic만 주고 받는 용도로 사용되기 때문에 이전 버전인 16.04 버전을 사용토록
-
-따라서 해당 사항을 건너뛰었음.
+참고 : http://pascal-walter.blogspot.com/2015/08/installing-lawicel-canusb-on-linux.html
 
 $ sudo apt-get install can-utils
-
-
-
-$ sudo modprobe can
-$ sudo modprobe slcan
+$ sudo modprobe can   
+$ sudo modprobe can_raw   
+$ sudo modprobe slcan   
 
 // CANUSB
 - CAN communication
