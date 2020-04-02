@@ -71,12 +71,10 @@ iface can0 inet manual
 
 // xenomai on raspberryPI3   
 
-참고 : https://github.com/thanhtam-h/rpi23-4.9.80-xeno3/tree/master/prebuilt   
+참고 : https://lemariva.com/blog/2018/07/raspberry-pi-xenomai-patching-tutorial-for-kernel-4-14-y
  
 error 
---> No ruls to make target 'arch/arm/tools/gen-mach-types' 또는 'arch/arm/tools/mach-types'   
---> fatal error: tools/be_byteshift.h: No such file or directory   
- : 위 참고 github에서 파일을 직접 다운받아 위치에 넣는 형식으로 해결     
-따라서 그냥 rpi23-4.9.80-xeno3 의 master branch를 다운받은 다음 직접 deploy 하는 것이 덜 귀찮을 것이다.   https://gitlab.denx.de/Xenomai/xenomai/-/wikis/Start_Here   
+-->  libz.so.1: cannot open shared object file: No such file or directory   
+$ sudo apt-get install lib32z1 
 
-https://gitlab.denx.de/Xenomai/xenomai/-/wikis/Installing_Xenomai_3
+https://github.com/lemariva/RT-Tools-RPi/tree/master/xenomai/v3.0.7
