@@ -83,5 +83,4 @@ https://github.com/lemariva/RT-Tools-RPi/tree/master/xenomai/v3.0.7
 
 사용   
 in rpi   
-$ wget https://github.com/hammammi/DualArm/blob/master/raspberryPI3B/xenomai-kernel.tgz   
-하여 위 참고 사이트 뒷부분부터 진행
+xenomai-kernel.tgz 
