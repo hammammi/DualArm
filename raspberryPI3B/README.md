@@ -84,3 +84,5 @@ https://github.com/lemariva/RT-Tools-RPi/tree/master/xenomai/v3.0.7
 사용   
 in rpi   
 xenomai-kernel.tgz 
+
+https://github.com/sestrem/raspberry_xenomai_ros2/wiki/Raspberry-with-Xenomai-and-ROS
