@@ -71,10 +71,17 @@ iface can0 inet manual
 
 // xenomai on raspberryPI3   
 
+boot image 만들기 (kernel build)   
+
 참고 : https://lemariva.com/blog/2018/07/raspberry-pi-xenomai-patching-tutorial-for-kernel-4-14-y
  
 error 
 -->  libz.so.1: cannot open shared object file: No such file or directory   
-$ sudo apt-get install lib32z1 
+$ sudo apt-get install lib32z1  
 
-https://github.com/lemariva/RT-Tools-RPi/tree/master/xenomai/v3.0.7
+https://github.com/lemariva/RT-Tools-RPi/tree/master/xenomai/v3.0.7    
+
+사용   
+in rpi   
+$ wget https://github.com/hammammi/DualArm/blob/master/raspberryPI3B/xenomai-kernel.tgz   
+하여 위 참고 사이트 뒷부분부터 진행
