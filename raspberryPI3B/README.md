@@ -1,3 +1,5 @@
+Raspberry Pi 3b Ubuntu 16.04
+
 Epos_Linux_Library -> home 또는 desktop에 다운로드
 
 $ sudo bash install.sh
@@ -79,10 +81,11 @@ error
 -->  libz.so.1: cannot open shared object file: No such file or directory   
 $ sudo apt-get install lib32z1  
 
+
+
 https://github.com/lemariva/RT-Tools-RPi/tree/master/xenomai/v3.0.7    
 
 사용   
 in rpi   
 xenomai-kernel.tgz 
 
-https://github.com/sestrem/raspberry_xenomai_ros2/wiki/Raspberry-with-Xenomai-and-ROS
