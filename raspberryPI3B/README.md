@@ -81,11 +81,17 @@ error
 -->  libz.so.1: cannot open shared object file: No such file or directory   
 $ sudo apt-get install lib32z1  
 
-cmdline.txt 수정 시 스페이스바로 띄어쓰기만 해야함 (줄바꿈X)
+cmdline.txt 수정 시 스페이스바로 띄어쓰기만 해야함 (줄바꿈X)   
+
+Deploying the Testsuit on Raspberry Pi 부분에서    
+
+$ sudo cp dev/* /dev/ 가 안될 시 $ sudo mv dev/* /dev/
+$ sudo cp usr/* /usr 은 $ sudo cp -rd usr/* /usr/ 로 변경   
+
 
 https://github.com/lemariva/RT-Tools-RPi/tree/master/xenomai/v3.0.7    
 
 사용   
 in rpi   
 xenomai-kernel.tgz 
-
+xenomai-tools.tgz
