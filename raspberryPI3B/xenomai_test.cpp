@@ -21,9 +21,9 @@
 #include <linux/can.h>
 #include <linux/can/raw.h>
 
-//#include <alchemy/task.h>
-//#include <alchemy/timer.h>
-//#include <xenomai/init.h>
+#include <alchemy/task.h>
+#include <alchemy/timer.h>
+#include <xenomai/init.h>
 
 #include "std_msgs/Int32.h"
 
@@ -34,6 +34,8 @@ typedef void* HANDLE;
 typedef int BOOL;
 
 using namespace std;
+
+RT_TASK measure_task;
 
 void* g_pKeyHandle = 0;
 int vel = 0;
@@ -216,19 +218,8 @@ std::string stringappend(string a, string b)
 
 void commandCallback(const std_msgs::Int32::ConstPtr& msg)
 {
-    /*string data;
-    struct can_frame frame;
-    string vel_desired_hex[Id_length];*/
 
-    //setVel = {msg->omega1, msg->omega2, msg->omega3, msg->omega4};
     setVel = msg->data;
-    //setVel[1] = msg->omega2;
-    //setVel[2] = msg->omega3;
-    //setVel[3] = msg->omega4;
-    //ROS_INFO("Desired velocity (rpm) = %d, %d, %d, %d", setVel[0], setVel[1], setVel[2], setVel[3]);
-
-    //stringstream ss;
-    //ros::Time begin = ros::Time::now();
 
 // Convert dec to hex
     vel_desired_hex = dec_to_hex(setVel, 4);
@@ -241,27 +232,15 @@ void commandCallback(const std_msgs::Int32::ConstPtr& msg)
     ros::Duration(0.00001).sleep();
 
 
-
-//    for (int i = 0; i < Id_length; i++) {
-//        // Convert dec to hex
-//        vel_desired_hex[i] = dec_to_hex(setVel[i], 4);
-//        // Send Profile Velocity control command to EPOS
-//        frame.can_id = COB_ID_Rx[i][3];
-//        frame.can_dlc = 6;
-//        data = stringappend(Control_Enable, vel_desired_hex[i]);
-//        hexstring2data((char *) data.c_str(), frame.data, 8);
-//        write(s, &frame, sizeof(struct can_frame));
-//        ros::Duration(0.00001).sleep();
-//    }
-
-    //ros::Time finish = ros::Time::now();
-    //ss << (finish-begin);
-    //LogInfo(ss.str());
 }
 
-int main(int argc, char **argv)
+void measure_run(void *arg)
 {
-    ros::init(argc, argv, "controller_pdo");
+
+    int argc;
+    char** argv;
+
+    ros::init(argc, argv, "controller_pdo_xeno");
     ros::NodeHandle n;
     string rtr;
     unsigned char buffer[4];
@@ -319,18 +298,12 @@ int main(int argc, char **argv)
     sleep(1);
 
     // Velocity Control mode Initialize
-
-//    for (int i=0; i<Id_length; i++)
-//    {
-        //struct can_frame frame1;
-        // Modes of operation (PVM)
-
     frame.can_id  = COB_ID_Rx[1];
     frame.can_dlc = 3;
     frame.data[0] = 0x00;
     frame.data[1] = 0x00;
     frame.data[2] = 0x03;
-//        write(s, &frame_fd, required_mtu);
+
     write(s, &frame, sizeof(struct can_frame));
     LogInfo("Velocitiy mode initialized");
     sleep(1);
@@ -351,17 +324,12 @@ int main(int argc, char **argv)
     frame.data[0] = 0x0F;
     frame.data[1] = 0x00;
     write(s, &frame, sizeof(struct can_frame));
-//        st = stringappend(COB_ID_Rx2[i][0], "#0F00");
-//        required_mtu = parse_canframe((char*)(st.c_str()), &frame_fd);
-//        write(s, &frame_fd, required_mtu);
+
     LogInfo("Enable controlword");
     sleep(1);
-//    }
-    //}
 
     ros::Subscriber sub = n.subscribe("input_msg", 1, commandCallback);
     ros::Publisher measure_pub = n.advertise<std_msgs::Int32>("measure", 1);
-//    ros::Publisher measure_p_pub = n.advertise<epos_tutorial::realVel>("measure_p", 1);
     ros::Rate loop_rate(100);
 
     iov.iov_base = &frame_get;
@@ -389,33 +357,20 @@ int main(int argc, char **argv)
 
     std_msgs::Int32 msg;
 
-    ros::Time old = ros::Time::now();
 
-    while (ros::ok())
+    rt_task_set_periodic(NULL, TM_NOW, 1e7)  //tick : 1 nanosec?  100Hz
+
+    while (run)
     {
-//        stringstream ss;
-//        ros::Time begin = ros::Time::now();
-        //epos_tutorial::realVel msg;
-
-
+        rt_task_wait_period(NULL);
         frame.can_id  = COB_ID_Tx[1] | CAN_RTR_FLAG;
         write(s, &frame, sizeof(struct can_frame));
-//            ros::Duration(0.00005).sleep();
+
         nnbytes = recvmsg(s,&canmsg, 0);
         msg.data = hexarray_to_int(frame_get.data,4);
 
-
-//        measure_p_pub.publish(msg_p);
         measure_pub.publish(msg);
 
-        ros::spinOnce();
-//        ros::Time end = ros::Time::now();
-//        if((end-old).toSec()>0.02){
-//            ss<< (end-begin);
-//            LogInfo(ss.str());
-//        }
-//        old = end;
-        loop_rate.sleep();
     }
 
     // Reset Remote Node
@@ -435,6 +390,23 @@ int main(int argc, char **argv)
     write(s, &frame, sizeof(struct can_frame));
     LogInfo("Stop Remote Node");
 
+}
 
-    return 0;
+int main(int argc, char **argv) {
+
+  cpu_set_t cpu_set_measure;
+  CPU_ZERO(&cpu_set_measure);
+  CPU_SET(0, &cpu_set_measure);
+
+  rt_task_create(&measure_task, 0, 90, 0);
+  rt_task_set_affinity(&measure_task, &cpu_set_measure);
+
+  rt_task_start(&measure_task, &measure_run, NULL)
+
+  while (run) {
+    usleep(1000000);
+  }
+
+  return 0;
+
 }
