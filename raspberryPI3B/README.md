@@ -93,5 +93,7 @@ https://github.com/lemariva/RT-Tools-RPi/tree/master/xenomai/v3.0.7
 
 사용   
 in rpi   
-xenomai-kernel.tgz 
-xenomai-tools.tgz
+xenomai-kernel.tgz  
+xenomai-tools.tgz   
+
+node 실행시 sudo -s 필요
