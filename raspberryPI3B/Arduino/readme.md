@@ -1,5 +1,8 @@
 arduino code for sensor reading     
 
+* arduino due를 사용하였음
+* due를 이용하기 위해 IDE에서 드라이버 설치 필요, board는 due programming port 
+
 arduino 설치     
 
 $ sudo apt-add-repository ppa:ubuntu-desktop/ubuntu-make
@@ -11,6 +14,7 @@ $ sudo usermod -aG dialout $USER
 
 로그아웃 후 로그인   
 
+IDE에서 manage libraries를 이용해 pololu의 VL53L1X 라이브러리 설치
 
 rosserial_arduino 패키지 설치    
 
