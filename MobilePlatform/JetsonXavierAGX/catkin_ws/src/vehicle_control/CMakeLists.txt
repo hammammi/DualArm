@@ -87,7 +87,9 @@ add_dependencies(vel_cmd_circle_fix vehicle_control_generate_messages_cpp ${catk
 target_link_libraries(vel_cmd_circle_fix ${catkin_LIBRARIES})
 
 add_executable(experiment_route1 src/experiment_route1.cpp)
+add_dependencies(experiment_route1 vehicle_control_generate_messages_cpp ${catkin_EXPORTED_TARGETS})
 target_link_libraries(experiment_route1 ${catkin_LIBRARIES})
 
 add_executable(experiment_route2 src/experiment_route2.cpp)
+add_dependencies(experiment_route2 vehicle_control_generate_messages_cpp ${catkin_EXPORTED_TARGETS})
 target_link_libraries(experiment_route2 ${catkin_LIBRARIES})
