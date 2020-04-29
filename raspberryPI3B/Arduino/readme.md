@@ -7,9 +7,9 @@ msg 폴더 내의 msg 파일 : vehicle_control 패키지에 복사 후 cm
 
 arduino 설치     
 
-$ sudo apt-add-repository ppa:ubuntu-desktop/ubuntu-make
-$ sudo apt-get update
-$ sudo apt-get install ubuntu-make
+$ sudo apt-add-repository ppa:ubuntu-desktop/ubuntu-make   
+$ sudo apt-get update   
+$ sudo apt-get install ubuntu-make   
 
 $ sudo umake ide arduino
 $ sudo usermod -aG dialout $USER    
