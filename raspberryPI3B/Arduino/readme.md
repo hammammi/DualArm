@@ -1,5 +1,7 @@
 arduino code for sensor reading     
 
+msg 폴더 내의 msg 파일 : vehicle_control 패키지에 복사 후 cm   
+
 * arduino due를 사용하였음
 * due를 이용하기 위해 IDE에서 드라이버 설치 필요, board는 due programming port 
 
@@ -14,7 +16,8 @@ $ sudo usermod -aG dialout $USER
 
 로그아웃 후 로그인   
 
-IDE에서 manage libraries를 이용해 pololu의 VL53L1X 라이브러리 설치
+IDE에서 manage libraries를 이용해 pololu의 VL53L1X 라이브러리 설치   
+Arduino 폴더에 mobileplatform_sensor 폴더 복사   
 
 rosserial_arduino 패키지 설치    
 
@@ -26,7 +29,7 @@ $ cd /libraries --> arduino 폴더 설치된 곳의 libraries 폴더 안을 말�
 $ rm -rf ros_lib --> 기존에 ros_lib이 설치되어 있었던 경우만   
 $ rosrun rosserial_arduino make_libraries.py . --> 마지막에 .을 찍어야함 (현재폴더에 설치함을 뜻함)   
 
-.ino 파일 업로드
+mobileplatform_sensor.ino 파일 업로드
 
 ros 노드 실행
 
