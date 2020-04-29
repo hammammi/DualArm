@@ -1,1 +1,1 @@
-arduino-ros code for sensor reading
+arduino code for sensor reading
