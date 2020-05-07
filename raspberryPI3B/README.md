@@ -57,6 +57,8 @@ $ sudo reboot
 
 $ sudo /sbin/ip link set can0 up type can bitrate 1000000  
 
+ (안되면 sudo apt-get -y install can-utils libsocketcan2 libsocketcan-dev)     
+ 
 if you want to make auto-start CAN interface on bootup
 
 in /etc/network/interfaces, copy and paste  
