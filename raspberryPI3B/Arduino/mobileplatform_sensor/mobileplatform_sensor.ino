@@ -136,7 +136,7 @@ void loop() {
 //        Serial.println(ntca[k]);
         ROSINFO("sen TIMEOUT"); }
     }
-    
+    closeall(ntca[k]);
     }
 //  Serial.print(ntca[k]);
 //  Serial.print("\t");
