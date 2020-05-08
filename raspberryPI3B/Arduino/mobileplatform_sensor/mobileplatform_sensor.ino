@@ -49,6 +49,7 @@ unsigned long old_time=0;
 void TCA9548A(uint8_t tca, uint8_t bus)
 {
   Wire.beginTransmission(tca);  // TCA9548A address is 0x70
+  Wire.write(0b00000000);
   Wire.write(1 << bus);          // send byte to select bus
   Wire.endTransmission();
 }
