@@ -1,4 +1,4 @@
-ethercat_test : main lowlevel controller    
+ethercat_test : main lowlevel controller --> xenomai 필요   
    
   - control_test : test
   - control_mobile 
