@@ -9,11 +9,11 @@ FileVersion=1
 FileRevision=0
 Description=Device Configuration File
 EDSVersion=4.0
-CreationTime=05:33PM
-CreationDate=10-15-2020
+CreationTime=01:54PM
+CreationDate=10-29-2020
 CreatedBy=mservo
-ModificationTime=05:33PM
-ModificationDate=10-15-2020
+ModificationTime=01:54PM
+ModificationDate=10-29-2020
 ModifiedBy=mservo
 
 [ToolInfos]
@@ -2332,7 +2332,7 @@ DataType=0x7
 AccessType=rw
 PDOMapping=0
 ObjFlags=0
-ParameterValue=0x0001D1A5
+ParameterValue=0x0001D0DF
 
 [3002]
 SubNumber=3
@@ -2359,7 +2359,7 @@ LowLimit=0
 HighLimit=4294967295
 PDOMapping=0
 ObjFlags=0
-ParameterValue=5652
+ParameterValue=5901
 
 [3002sub2]
 ParameterName=Electrical inductance
@@ -2371,7 +2371,7 @@ LowLimit=0
 HighLimit=65535
 PDOMapping=0
 ObjFlags=0
-ParameterValue=4079
+ParameterValue=3526
 
 [3003]
 SubNumber=5
@@ -2602,7 +2602,7 @@ DataType=0x7
 AccessType=ro
 PDOMapping=0
 ObjFlags=1
-ParameterValue=0x00031AB3
+ParameterValue=0x00017DFD
 
 [3012subA]
 ParameterName=SSI commutation offset value
@@ -2709,7 +2709,7 @@ DataType=0x7
 AccessType=rww
 PDOMapping=1
 ObjFlags=0
-ParameterValue=0x0058A778
+ParameterValue=0x005D16EE
 
 [30A0sub2]
 ParameterName=Current controller I gain
@@ -2718,7 +2718,7 @@ DataType=0x7
 AccessType=rww
 PDOMapping=1
 ObjFlags=0
-ParameterValue=0x007778B2
+ParameterValue=0x0096B10B
 
 [30A1]
 SubNumber=6
@@ -2800,7 +2800,7 @@ DataType=0x7
 AccessType=rww
 PDOMapping=1
 ObjFlags=0
-ParameterValue=0x004B369D
+ParameterValue=0x007270E0
 
 [30A2sub2]
 ParameterName=Velocity controller I gain
@@ -2809,7 +2809,7 @@ DataType=0x7
 AccessType=rww
 PDOMapping=1
 ObjFlags=0
-ParameterValue=0x1081F13A
+ParameterValue=0x00B71B00
 
 [30A2sub3]
 ParameterName=Velocity controller FF velocity gain
@@ -2818,7 +2818,7 @@ DataType=0x7
 AccessType=rww
 PDOMapping=1
 ObjFlags=0
-ParameterValue=0x0008C384
+ParameterValue=0x000493E0
 
 [30A2sub4]
 ParameterName=Velocity controller FF acceleration gain
@@ -2827,7 +2827,7 @@ DataType=0x7
 AccessType=rww
 PDOMapping=1
 ObjFlags=0
-ParameterValue=0x00008242
+ParameterValue=0x00007530
 
 [30A3]
 SubNumber=6
@@ -2932,7 +2932,7 @@ DataType=0x7
 AccessType=rww
 PDOMapping=1
 ObjFlags=0
-ParameterValue=0x00006A96
+ParameterValue=0x0001AA93
 
 [30AEsub2]
 ParameterName=Main loop P gain high bandwidth
@@ -2941,7 +2941,7 @@ DataType=0x7
 AccessType=rww
 PDOMapping=1
 ObjFlags=0
-ParameterValue=0x0001C642
+ParameterValue=0x0001AA93
 
 [30AEsub3]
 ParameterName=Main loop gain scheduling weight
@@ -2968,7 +2968,7 @@ DataType=0x7
 AccessType=rww
 PDOMapping=1
 ObjFlags=0
-ParameterValue=0x000433C4
+ParameterValue=0x000003E8
 
 [30AEsub12]
 ParameterName=Main loop filter coefficient c
@@ -2977,7 +2977,7 @@ DataType=0x7
 AccessType=rww
 PDOMapping=1
 ObjFlags=0
-ParameterValue=0x0BC296AA
+ParameterValue=0x000003E8
 
 [30AEsub13]
 ParameterName=Main loop filter coefficient d
@@ -2986,7 +2986,7 @@ DataType=0x7
 AccessType=rww
 PDOMapping=1
 ObjFlags=0
-ParameterValue=0x000D8E36
+ParameterValue=0x000003E8
 
 [30AEsub14]
 ParameterName=Main loop filter coefficient e
@@ -2995,7 +2995,7 @@ DataType=0x7
 AccessType=rww
 PDOMapping=1
 ObjFlags=0
-ParameterValue=0x0BC296AA
+ParameterValue=0x000003E8
 
 [30AEsub20]
 ParameterName=Auxiliary loop P gain
@@ -3004,7 +3004,7 @@ DataType=0x7
 AccessType=rww
 PDOMapping=1
 ObjFlags=0
-ParameterValue=0x00030211
+ParameterValue=0x0002A346
 
 [30AEsub21]
 ParameterName=Auxiliary loop I gain
@@ -3013,7 +3013,7 @@ DataType=0x7
 AccessType=rww
 PDOMapping=1
 ObjFlags=0
-ParameterValue=0x003BE3E8
+ParameterValue=0x002E7BC1
 
 [30AEsub22]
 ParameterName=Auxiliary loop FF velocity gain
@@ -3022,7 +3022,7 @@ DataType=0x7
 AccessType=rww
 PDOMapping=1
 ObjFlags=0
-ParameterValue=0x000014E1
+ParameterValue=0x00000F05
 
 [30AEsub23]
 ParameterName=Auxiliary loop FF acceleration gain
@@ -3031,7 +3031,7 @@ DataType=0x7
 AccessType=rww
 PDOMapping=1
 ObjFlags=0
-ParameterValue=0x00000158
+ParameterValue=0x0000013F
 
 [30AEsub30]
 ParameterName=Auxiliary loop observer position correction gain
@@ -3040,7 +3040,7 @@ DataType=0x7
 AccessType=rww
 PDOMapping=1
 ObjFlags=0
-ParameterValue=0x00000383
+ParameterValue=0x00000384
 
 [30AEsub31]
 ParameterName=Auxiliary loop observer velocity correction gain
@@ -3049,7 +3049,7 @@ DataType=0x7
 AccessType=rww
 PDOMapping=1
 ObjFlags=0
-ParameterValue=0x000A3233
+ParameterValue=0x000A3E6C
 
 [30AEsub32]
 ParameterName=Auxiliary loop observer load correction gain
@@ -3058,7 +3058,7 @@ DataType=0x7
 AccessType=rww
 PDOMapping=1
 ObjFlags=0
-ParameterValue=0x000321FC
+ParameterValue=0x0002EABB
 
 [30AEsub33]
 ParameterName=Auxiliary loop observer friction
@@ -3067,7 +3067,7 @@ DataType=0x7
 AccessType=rww
 PDOMapping=1
 ObjFlags=0
-ParameterValue=0x0000297C
+ParameterValue=0x00001DCB
 
 [30AEsub34]
 ParameterName=Auxiliary loop observer inertia
@@ -3076,7 +3076,7 @@ DataType=0x7
 AccessType=rww
 PDOMapping=1
 ObjFlags=0
-ParameterValue=0x00064044
+ParameterValue=0x0005CB11
 
 [30AEsub40]
 ParameterName=Dual loop configuration miscellaneous
@@ -3085,7 +3085,7 @@ DataType=0x6
 AccessType=rww
 PDOMapping=1
 ObjFlags=0
-ParameterValue=0x0002
+ParameterValue=0x0000
 
 [30B0]
 ParameterName=Home position
@@ -3299,7 +3299,7 @@ DataType=0x6
 AccessType=ro
 PDOMapping=1
 ObjFlags=1
-ParameterValue=0x0002
+ParameterValue=0x0000
 
 [3141sub2]
 ParameterName=Digital inputs polarity
@@ -3308,7 +3308,7 @@ DataType=0x6
 AccessType=rw
 PDOMapping=0
 ObjFlags=0
-ParameterValue=0x0000
+ParameterValue=0x0001
 
 [3142]
 SubNumber=9
@@ -4135,7 +4135,7 @@ DataType=0x3
 AccessType=ro
 PDOMapping=0
 ObjFlags=0
-ParameterValue=0x01E8
+ParameterValue=0x019A
 
 [3240]
 SubNumber=5
@@ -4169,7 +4169,7 @@ DataType=0x6
 AccessType=ro
 PDOMapping=0
 ObjFlags=1
-ParameterValue=0x05B4
+ParameterValue=0x05B3
 
 [3240sub3]
 ParameterName=Internal ADC encoder 2 channel B analog value
@@ -4178,7 +4178,7 @@ DataType=0x6
 AccessType=ro
 PDOMapping=0
 ObjFlags=1
-ParameterValue=0x05B6
+ParameterValue=0x05B5
 
 [3240sub4]
 ParameterName=Internal STO input states
@@ -4212,7 +4212,7 @@ AccessType=rw
 DefaultValue=0
 PDOMapping=0
 ObjFlags=0
-ParameterValue=-53
+ParameterValue=-58
 
 [3241sub2]
 ParameterName=Internal ADC current offset simultaneous phase V
@@ -4222,7 +4222,7 @@ AccessType=rw
 DefaultValue=0
 PDOMapping=0
 ObjFlags=0
-ParameterValue=41
+ParameterValue=45
 
 [3241sub3]
 ParameterName=Internal ADC current offset sequential phase U
@@ -4232,7 +4232,7 @@ AccessType=rw
 DefaultValue=0
 PDOMapping=0
 ObjFlags=0
-ParameterValue=-53
+ParameterValue=-58
 
 [3241sub4]
 ParameterName=Internal ADC current offset sequential phase V
@@ -4242,7 +4242,7 @@ AccessType=rw
 DefaultValue=0
 PDOMapping=0
 ObjFlags=0
-ParameterValue=41
+ParameterValue=45
 
 [3241sub5]
 ParameterName=Internal ADC current offset sequential phase W
@@ -4252,7 +4252,7 @@ AccessType=rw
 DefaultValue=0
 PDOMapping=0
 ObjFlags=0
-ParameterValue=-351
+ParameterValue=-355
 
 [3241sub6]
 ParameterName=Internal electrical rotor angle
@@ -4801,7 +4801,7 @@ ObjectType=0x7
 DataType=0x4
 AccessType=ro
 PDOMapping=1
-ParameterValue=0xFFFF1AB3
+ParameterValue=0x00017DFD
 
 [6065]
 ParameterName=Following error window
@@ -4850,7 +4850,7 @@ DataType=0x7
 AccessType=rw
 DefaultValue=0
 PDOMapping=0
-ParameterValue=111576
+ParameterValue=111391
 
 [6077]
 ParameterName=Torque actual value
@@ -5161,7 +5161,7 @@ DataType=0x4
 AccessType=ro
 PDOMapping=1
 ObjFlags=1
-ParameterValue=0xFFFF1AB3
+ParameterValue=0x00017DFC
 
 [60E4sub3]
 ParameterName=Position actual value sensor 3
@@ -5254,7 +5254,7 @@ ObjectType=0x7
 DataType=0x7
 AccessType=ro
 PDOMapping=1
-ParameterValue=0x02000000
+ParameterValue=0x01000000
 
 [60FE]
 SubNumber=2
