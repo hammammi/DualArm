@@ -4,17 +4,17 @@
 ;*****************************************************************
 
 [FileInfo]
-FileName=node3.dcf
+FileName=joint2.dcf
 FileVersion=1
 FileRevision=0
 Description=Device Configuration File
 EDSVersion=4.0
-CreationTime=03:00PM
-CreationDate=07-06-2020
-CreatedBy=mservo
-ModificationTime=03:00PM
-ModificationDate=07-06-2020
-ModifiedBy=mservo
+CreationTime=06:36PM
+CreationDate=04-27-2021
+CreatedBy=stree104
+ModificationTime=06:36PM
+ModificationDate=04-27-2021
+ModifiedBy=stree104
 
 [ToolInfos]
 ToolVersion=EPOS4 Device Driver 3.5.1.0
@@ -236,7 +236,7 @@ DataType=0x5
 AccessType=ro
 DefaultValue=0
 PDOMapping=0
-ParameterValue=32
+ParameterValue=0
 
 [1008]
 ParameterName=Manufacturer device name
@@ -369,7 +369,7 @@ DataType=0x5
 AccessType=ro
 PDOMapping=0
 ObjFlags=1
-ParameterValue=0x06
+ParameterValue=0x05
 
 [10F3sub1]
 ParameterName=Maximum messages
@@ -387,7 +387,7 @@ DataType=0x5
 AccessType=ro
 PDOMapping=0
 ObjFlags=1
-ParameterValue=0x06
+ParameterValue=0x00
 
 [10F3sub3]
 ParameterName=Newest acknowledged message
@@ -470,7 +470,7 @@ LowLimit=0
 HighLimit=12
 PDOMapping=0
 ObjFlags=0
-ParameterValue=1
+ParameterValue=3
 
 [1600sub1]
 ParameterName=1st mapped object in RxPDO 1
@@ -490,7 +490,7 @@ AccessType=ro
 DefaultValue=0x00000000
 PDOMapping=0
 ObjFlags=0
-ParameterValue=0x00000000
+ParameterValue=0x607A0020
 
 [1600sub3]
 ParameterName=3rd mapped object in RxPDO 1
@@ -500,7 +500,7 @@ AccessType=ro
 DefaultValue=0x00000000
 PDOMapping=0
 ObjFlags=0
-ParameterValue=0x00000000
+ParameterValue=0x60FF0020
 
 [1600sub4]
 ParameterName=4th mapped object in RxPDO 1
@@ -510,7 +510,7 @@ AccessType=ro
 DefaultValue=0x00000000
 PDOMapping=0
 ObjFlags=0
-ParameterValue=0x00000000
+ParameterValue=0x60810020
 
 [1600sub5]
 ParameterName=5th mapped object in RxPDO 1
@@ -520,7 +520,7 @@ AccessType=ro
 DefaultValue=0x00000000
 PDOMapping=0
 ObjFlags=0
-ParameterValue=0x00000000
+ParameterValue=0x60830020
 
 [1600sub6]
 ParameterName=6th mapped object in RxPDO 1
@@ -530,7 +530,7 @@ AccessType=ro
 DefaultValue=0x00000000
 PDOMapping=0
 ObjFlags=0
-ParameterValue=0x00000000
+ParameterValue=0x60840020
 
 [1600sub7]
 ParameterName=7th mapped object in RxPDO 1
@@ -607,7 +607,7 @@ LowLimit=0
 HighLimit=12
 PDOMapping=0
 ObjFlags=0
-ParameterValue=2
+ParameterValue=0
 
 [1601sub1]
 ParameterName=1st mapped object in RxPDO 2
@@ -744,7 +744,7 @@ LowLimit=0
 HighLimit=12
 PDOMapping=0
 ObjFlags=0
-ParameterValue=2
+ParameterValue=0
 
 [1602sub1]
 ParameterName=1st mapped object in RxPDO 3
@@ -881,7 +881,7 @@ LowLimit=0
 HighLimit=12
 PDOMapping=0
 ObjFlags=0
-ParameterValue=2
+ParameterValue=0
 
 [1603sub1]
 ParameterName=1st mapped object in RxPDO 4
@@ -1018,7 +1018,7 @@ LowLimit=0
 HighLimit=12
 PDOMapping=0
 ObjFlags=0
-ParameterValue=1
+ParameterValue=5
 
 [1A00sub1]
 ParameterName=1st mapped object in TxPDO 1
@@ -1038,7 +1038,7 @@ AccessType=ro
 DefaultValue=0x00000000
 PDOMapping=0
 ObjFlags=0
-ParameterValue=0x00000000
+ParameterValue=0x60640020
 
 [1A00sub3]
 ParameterName=3rd mapped object in TxPDO 1
@@ -1048,7 +1048,7 @@ AccessType=ro
 DefaultValue=0x00000000
 PDOMapping=0
 ObjFlags=0
-ParameterValue=0x00000000
+ParameterValue=0x606C0020
 
 [1A00sub4]
 ParameterName=4th mapped object in TxPDO 1
@@ -1058,7 +1058,7 @@ AccessType=ro
 DefaultValue=0x00000000
 PDOMapping=0
 ObjFlags=0
-ParameterValue=0x00000000
+ParameterValue=0x60FD0020
 
 [1A00sub5]
 ParameterName=5th mapped object in TxPDO 1
@@ -1068,7 +1068,7 @@ AccessType=ro
 DefaultValue=0x00000000
 PDOMapping=0
 ObjFlags=0
-ParameterValue=0x00000000
+ParameterValue=0x603F0010
 
 [1A00sub6]
 ParameterName=6th mapped object in TxPDO 1
@@ -1078,7 +1078,7 @@ AccessType=ro
 DefaultValue=0x00000000
 PDOMapping=0
 ObjFlags=0
-ParameterValue=0x00000000
+ParameterValue=0x60610008
 
 [1A00sub7]
 ParameterName=7th mapped object in TxPDO 1
@@ -1088,7 +1088,7 @@ AccessType=ro
 DefaultValue=0x00000000
 PDOMapping=0
 ObjFlags=0
-ParameterValue=0x00000000
+ParameterValue=0x60620020
 
 [1A00sub8]
 ParameterName=8th mapped object in TxPDO 1
@@ -1155,7 +1155,7 @@ LowLimit=0
 HighLimit=12
 PDOMapping=0
 ObjFlags=0
-ParameterValue=2
+ParameterValue=0
 
 [1A01sub1]
 ParameterName=1st mapped object in TxPDO 2
@@ -1292,7 +1292,7 @@ LowLimit=0
 HighLimit=12
 PDOMapping=0
 ObjFlags=0
-ParameterValue=1
+ParameterValue=0
 
 [1A02sub1]
 ParameterName=1st mapped object in TxPDO 3
@@ -1429,7 +1429,7 @@ LowLimit=0
 HighLimit=12
 PDOMapping=0
 ObjFlags=0
-ParameterValue=2
+ParameterValue=0
 
 [1A03sub1]
 ParameterName=1st mapped object in TxPDO 4
@@ -2122,7 +2122,7 @@ DataType=0x6
 AccessType=ro
 PDOMapping=0
 ObjFlags=0
-ParameterValue=0x01E0
+ParameterValue=0x021F
 
 [2200sub2]
 ParameterName=Valid logic supply
@@ -2235,7 +2235,7 @@ AccessType=rw
 DefaultValue=0x00010111
 PDOMapping=0
 ObjFlags=0
-ParameterValue=0x00010111
+ParameterValue=0x00011111
 
 [3000sub3]
 ParameterName=Commutation sensors
@@ -2273,7 +2273,7 @@ DataType=0x7
 AccessType=ro
 PDOMapping=0
 ObjFlags=1
-ParameterValue=0x00000BB8
+ParameterValue=0x0000069A
 
 [3001]
 SubNumber=6
@@ -2296,7 +2296,7 @@ DataType=0x7
 AccessType=rww
 PDOMapping=1
 ObjFlags=0
-ParameterValue=0x000008DE
+ParameterValue=0x00000FDC
 
 [3001sub2]
 ParameterName=Output current limit
@@ -2305,7 +2305,7 @@ DataType=0x7
 AccessType=rww
 PDOMapping=1
 ObjFlags=0
-ParameterValue=0x00002710
+ParameterValue=0x00004E20
 
 [3001sub3]
 ParameterName=Number of pole pairs
@@ -2314,7 +2314,7 @@ DataType=0x5
 AccessType=rw
 PDOMapping=0
 ObjFlags=0
-ParameterValue=0x0C
+ParameterValue=0x0B
 
 [3001sub4]
 ParameterName=Thermal time constant winding
@@ -2323,7 +2323,7 @@ DataType=0x6
 AccessType=rw
 PDOMapping=0
 ObjFlags=0
-ParameterValue=0x01CC
+ParameterValue=0x023A
 
 [3001sub5]
 ParameterName=Torque constant
@@ -2332,7 +2332,7 @@ DataType=0x7
 AccessType=rw
 PDOMapping=0
 ObjFlags=0
-ParameterValue=0x0002FF03
+ParameterValue=0x00031163
 
 [3002]
 SubNumber=3
@@ -2359,7 +2359,7 @@ LowLimit=0
 HighLimit=4294967295
 PDOMapping=0
 ObjFlags=0
-ParameterValue=2071
+ParameterValue=773
 
 [3002sub2]
 ParameterName=Electrical inductance
@@ -2371,7 +2371,7 @@ LowLimit=0
 HighLimit=65535
 PDOMapping=0
 ObjFlags=0
-ParameterValue=2187
+ParameterValue=1305
 
 [3003]
 SubNumber=5
@@ -2410,7 +2410,7 @@ LowLimit=1
 HighLimit=4294967295
 PDOMapping=0
 ObjFlags=0
-ParameterValue=1
+ParameterValue=160
 
 [3003sub3]
 ParameterName=Max gear input speed
@@ -2422,7 +2422,7 @@ LowLimit=1
 HighLimit=100000
 PDOMapping=0
 ObjFlags=0
-ParameterValue=100000
+ParameterValue=3500
 
 [3003sub4]
 ParameterName=Gear miscellaneous configuration
@@ -2475,7 +2475,7 @@ DataType=0x4
 AccessType=ro
 PDOMapping=1
 ObjFlags=1
-ParameterValue=0x00000000
+ParameterValue=0x0000001B
 
 [3011]
 SubNumber=4
@@ -2645,7 +2645,7 @@ DataType=0x6
 AccessType=ro
 PDOMapping=0
 ObjFlags=1
-ParameterValue=0x0007
+ParameterValue=0x0005
 
 [3020]
 SubNumber=4
@@ -2709,7 +2709,7 @@ DataType=0x7
 AccessType=rww
 PDOMapping=1
 ObjFlags=0
-ParameterValue=0x007AA914
+ParameterValue=0x000DBBA0
 
 [30A0sub2]
 ParameterName=Current controller I gain
@@ -2718,7 +2718,7 @@ DataType=0x7
 AccessType=rww
 PDOMapping=1
 ObjFlags=0
-ParameterValue=0x015C76A1
+ParameterValue=0x00186A00
 
 [30A1]
 SubNumber=6
@@ -2741,7 +2741,7 @@ DataType=0x7
 AccessType=rww
 PDOMapping=1
 ObjFlags=0
-ParameterValue=0x02625A00
+ParameterValue=0x00E4E1C0
 
 [30A1sub2]
 ParameterName=Position controller I gain
@@ -2750,7 +2750,7 @@ DataType=0x7
 AccessType=rww
 PDOMapping=1
 ObjFlags=0
-ParameterValue=0x01312D00
+ParameterValue=0x01C9C380
 
 [30A1sub3]
 ParameterName=Position controller D gain
@@ -2759,7 +2759,7 @@ DataType=0x7
 AccessType=rww
 PDOMapping=1
 ObjFlags=0
-ParameterValue=0x000F4240
+ParameterValue=0x001B7740
 
 [30A1sub4]
 ParameterName=Position controller FF velocity gain
@@ -2768,7 +2768,7 @@ DataType=0x7
 AccessType=rww
 PDOMapping=1
 ObjFlags=0
-ParameterValue=0x00000000
+ParameterValue=0x0000336A
 
 [30A1sub5]
 ParameterName=Position controller FF acceleration gain
@@ -2777,7 +2777,7 @@ DataType=0x7
 AccessType=rww
 PDOMapping=1
 ObjFlags=0
-ParameterValue=0x000005BC
+ParameterValue=0x000009F7
 
 [30A2]
 SubNumber=5
@@ -2800,7 +2800,7 @@ DataType=0x7
 AccessType=rww
 PDOMapping=1
 ObjFlags=0
-ParameterValue=0x0003169D
+ParameterValue=0x0007A120
 
 [30A2sub2]
 ParameterName=Velocity controller I gain
@@ -2809,7 +2809,7 @@ DataType=0x7
 AccessType=rww
 PDOMapping=1
 ObjFlags=0
-ParameterValue=0x001A51B0
+ParameterValue=0x01312D00
 
 [30A2sub3]
 ParameterName=Velocity controller FF velocity gain
@@ -2818,7 +2818,7 @@ DataType=0x7
 AccessType=rww
 PDOMapping=1
 ObjFlags=0
-ParameterValue=0x00000000
+ParameterValue=0x00001909
 
 [30A2sub4]
 ParameterName=Velocity controller FF acceleration gain
@@ -2827,7 +2827,7 @@ DataType=0x7
 AccessType=rww
 PDOMapping=1
 ObjFlags=0
-ParameterValue=0x000005CC
+ParameterValue=0x000009FB
 
 [30A3]
 SubNumber=6
@@ -3333,7 +3333,7 @@ AccessType=rw
 DefaultValue=0
 PDOMapping=0
 ObjFlags=0
-ParameterValue=0
+ParameterValue=24
 
 [3142sub2]
 ParameterName=Digital input 2 configuration
@@ -4135,7 +4135,7 @@ DataType=0x3
 AccessType=ro
 PDOMapping=0
 ObjFlags=0
-ParameterValue=0x0142
+ParameterValue=0x01AF
 
 [3240]
 SubNumber=5
@@ -4169,7 +4169,7 @@ DataType=0x6
 AccessType=ro
 PDOMapping=0
 ObjFlags=1
-ParameterValue=0x065C
+ParameterValue=0x065A
 
 [3240sub3]
 ParameterName=Internal ADC encoder 2 channel B analog value
@@ -4178,7 +4178,7 @@ DataType=0x6
 AccessType=ro
 PDOMapping=0
 ObjFlags=1
-ParameterValue=0x065E
+ParameterValue=0x065C
 
 [3240sub4]
 ParameterName=Internal STO input states
@@ -4212,7 +4212,7 @@ AccessType=rw
 DefaultValue=0
 PDOMapping=0
 ObjFlags=0
-ParameterValue=0
+ParameterValue=-157
 
 [3241sub2]
 ParameterName=Internal ADC current offset simultaneous phase V
@@ -4222,7 +4222,7 @@ AccessType=rw
 DefaultValue=0
 PDOMapping=0
 ObjFlags=0
-ParameterValue=0
+ParameterValue=162
 
 [3241sub3]
 ParameterName=Internal ADC current offset sequential phase U
@@ -4232,7 +4232,7 @@ AccessType=rw
 DefaultValue=0
 PDOMapping=0
 ObjFlags=0
-ParameterValue=0
+ParameterValue=-157
 
 [3241sub4]
 ParameterName=Internal ADC current offset sequential phase V
@@ -4242,7 +4242,7 @@ AccessType=rw
 DefaultValue=0
 PDOMapping=0
 ObjFlags=0
-ParameterValue=0
+ParameterValue=162
 
 [3241sub5]
 ParameterName=Internal ADC current offset sequential phase W
@@ -4252,7 +4252,7 @@ AccessType=rw
 DefaultValue=0
 PDOMapping=0
 ObjFlags=0
-ParameterValue=0
+ParameterValue=51
 
 [3241sub6]
 ParameterName=Internal electrical rotor angle
@@ -4262,7 +4262,7 @@ AccessType=rw
 DefaultValue=0
 PDOMapping=0
 ObjFlags=1
-ParameterValue=60
+ParameterValue=10535
 
 [3248]
 SubNumber=3
@@ -4289,7 +4289,7 @@ LowLimit=0
 HighLimit=8000
 PDOMapping=0
 ObjFlags=1
-ParameterValue=0
+ParameterValue=2030
 
 [3248sub2]
 ParameterName=Internal LR identification frequency
@@ -4379,7 +4379,7 @@ LowLimit=1
 HighLimit=82000
 PDOMapping=0
 ObjFlags=1
-ParameterValue=1
+ParameterValue=2048
 
 [324Bsub3]
 ParameterName=Internal identify Km
@@ -4449,7 +4449,7 @@ DataType=0x7
 AccessType=ro
 PDOMapping=0
 ObjFlags=0
-ParameterValue=0x00000000
+ParameterValue=0x000000EC
 
 [324Csub2]
 ParameterName=Internal set value of current
@@ -4458,7 +4458,7 @@ DataType=0x6
 AccessType=ro
 PDOMapping=0
 ObjFlags=0
-ParameterValue=0x0000
+ParameterValue=0x09D9
 
 [324Csub3]
 ParameterName=Internal actual position peak value
@@ -4467,7 +4467,7 @@ DataType=0x7
 AccessType=ro
 PDOMapping=0
 ObjFlags=0
-ParameterValue=0x7FFFFFFF
+ParameterValue=0x000004CE
 
 [324Csub4]
 ParameterName=Internal actual value of dynamic friction
@@ -4476,7 +4476,7 @@ DataType=0x7
 AccessType=ro
 PDOMapping=0
 ObjFlags=0
-ParameterValue=0x00000000
+ParameterValue=0x000051FA
 
 [324Csub5]
 ParameterName=Internal number of oscillation cycles
@@ -4485,7 +4485,7 @@ DataType=0x7
 AccessType=ro
 PDOMapping=0
 ObjFlags=0
-ParameterValue=0x00000000
+ParameterValue=0x00000057
 
 [324Csub20]
 ParameterName=Internal auxiliary velocity demand value
@@ -4717,7 +4717,7 @@ ObjectType=0x7
 DataType=0x6
 AccessType=ro
 PDOMapping=1
-ParameterValue=0x7388
+ParameterValue=0x0000
 
 [6040]
 ParameterName=Controlword
@@ -4733,7 +4733,7 @@ ObjectType=0x7
 DataType=0x6
 AccessType=ro
 PDOMapping=1
-ParameterValue=0x0008
+ParameterValue=0x0040
 
 [605A]
 ParameterName=Quick stop option code
@@ -4777,7 +4777,7 @@ ObjectType=0x7
 DataType=0x2
 AccessType=rww
 PDOMapping=1
-ParameterValue=0x01
+ParameterValue=0x08
 
 [6061]
 ParameterName=Modes of operation display
@@ -4785,7 +4785,7 @@ ObjectType=0x7
 DataType=0x2
 AccessType=ro
 PDOMapping=1
-ParameterValue=0x01
+ParameterValue=0x08
 
 [6062]
 ParameterName=Position demand value
@@ -4801,7 +4801,7 @@ ObjectType=0x7
 DataType=0x4
 AccessType=ro
 PDOMapping=1
-ParameterValue=0x00000000
+ParameterValue=0x0000003B
 
 [6065]
 ParameterName=Following error window
@@ -4809,7 +4809,7 @@ ObjectType=0x7
 DataType=0x7
 AccessType=rww
 PDOMapping=1
-ParameterValue=0x000F4240
+ParameterValue=0x05F5E100
 
 [6066]
 ParameterName=Following error timeout
@@ -4850,7 +4850,7 @@ DataType=0x7
 AccessType=rw
 DefaultValue=0
 PDOMapping=0
-ParameterValue=445726
+ParameterValue=816300
 
 [6077]
 ParameterName=Torque actual value
@@ -4938,7 +4938,7 @@ ObjectType=0x7
 DataType=0x7
 AccessType=rww
 PDOMapping=1
-ParameterValue=0x000006A4
+ParameterValue=0x00000686
 
 [6080]
 ParameterName=Max motor speed
@@ -4946,7 +4946,7 @@ ObjectType=0x7
 DataType=0x7
 AccessType=rww
 PDOMapping=1
-ParameterValue=0x00000BB8
+ParameterValue=0x0000069A
 
 [6081]
 ParameterName=Profile velocity
@@ -4954,7 +4954,7 @@ ObjectType=0x7
 DataType=0x7
 AccessType=rww
 PDOMapping=1
-ParameterValue=0x000004B0
+ParameterValue=0x000000C8
 
 [6083]
 ParameterName=Profile acceleration
@@ -4962,7 +4962,7 @@ ObjectType=0x7
 DataType=0x7
 AccessType=rww
 PDOMapping=1
-ParameterValue=0x00001388
+ParameterValue=0x00000032
 
 [6084]
 ParameterName=Profile deceleration
@@ -4970,7 +4970,7 @@ ObjectType=0x7
 DataType=0x7
 AccessType=rww
 PDOMapping=1
-ParameterValue=0x00002710
+ParameterValue=0x00000032
 
 [6085]
 ParameterName=Quick stop deceleration
@@ -5112,7 +5112,7 @@ DataType=0x5
 AccessType=rww
 PDOMapping=1
 ObjFlags=0
-ParameterValue=0x04
+ParameterValue=0x01
 
 [60C2sub2]
 ParameterName=Interpolation time index
@@ -5152,7 +5152,7 @@ DataType=0x4
 AccessType=ro
 PDOMapping=1
 ObjFlags=1
-ParameterValue=0x00000000
+ParameterValue=0x0000003B
 
 [60E4sub2]
 ParameterName=Position actual value sensor 2
@@ -5170,7 +5170,7 @@ DataType=0x4
 AccessType=ro
 PDOMapping=1
 ObjFlags=1
-ParameterValue=0xFFFFFFFF
+ParameterValue=0x00000004
 
 [60E5]
 SubNumber=7
